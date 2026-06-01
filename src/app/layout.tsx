@@ -13,20 +13,21 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Apex Automation & Electronics | Industrial Automation Solutions",
+  title: "Silver Green Automations | Entrance & Home Automation Coimbatore",
   description:
-    "Trusted supplier of industrial automation products, PLC systems, sensors, controllers, and electronics components. Serving manufacturing, energy, and infrastructure sectors.",
+    "Leading entrance and home automation company in Coimbatore. Automatic sliding gates, swing gates, boom barriers, rolling shutters, garage doors, and smart home solutions across Tamil Nadu.",
   keywords: [
-    "Industrial Automation",
-    "PLC Systems",
-    "Sensors and Controllers",
-    "Industrial Electronics",
-    "Power Systems",
-    "Automation Modules",
-    "RFQ",
-    "Factory Automation",
+    "Entrance Automation",
+    "Home Automation",
+    "Sliding Gate Automation",
+    "Swing Gate Motor",
+    "Boom Barrier",
+    "Rolling Shutter",
+    "Garage Door Automation",
+    "Coimbatore",
+    "Silver Green Automations",
   ],
-  authors: [{ name: "Apex Automation & Electronics" }],
+  authors: [{ name: "Silver Green Automations" }],
 };
 
 export default function RootLayout({
@@ -39,7 +40,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased scroll-smooth`}
     >
-      <body className="min-h-full flex flex-col bg-white text-slate-900">
+      <body className="min-h-full flex flex-col bg-white text-slate-800">
         {children}
       </body>
     </html>

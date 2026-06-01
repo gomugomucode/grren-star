@@ -1,127 +1,150 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { ArrowRight, Bot, Sparkles } from "lucide-react";
+import { useState, useEffect, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+
+const slides = [
+  {
+    id: 1,
+    title: "Sliding Gate Automations",
+    subtitle: "Make it easy to control the gate with Silver Green Automations",
+    gradient: "from-green-900 via-green-800 to-slate-900",
+    accent: "bg-green-500/20 border-green-400/30",
+  },
+  {
+    id: 2,
+    title: "Swing Gate Automations",
+    subtitle: "Make your gate smarter with Silver Green Automations",
+    gradient: "from-emerald-900 via-green-800 to-slate-900",
+    accent: "bg-emerald-500/20 border-emerald-400/30",
+  },
+  {
+    id: 3,
+    title: "Garage Door Automations",
+    subtitle: "Make your parking smarter with Silver Green Automations",
+    gradient: "from-teal-900 via-green-800 to-slate-900",
+    accent: "bg-teal-500/20 border-teal-400/30",
+  },
+  {
+    id: 4,
+    title: "Boom Barrier",
+    subtitle: "Make your commercial space smarter with Silver Green Automations",
+    gradient: "from-green-950 via-green-900 to-slate-900",
+    accent: "bg-lime-500/20 border-lime-400/30",
+  },
+];
 
 export default function Hero() {
+  const [current, setCurrent] = useState(0);
+
+  const next = useCallback(() => {
+    setCurrent((prev) => (prev + 1) % slides.length);
+  }, []);
+
+  const prev = useCallback(() => {
+    setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(next, 6000);
+    return () => clearInterval(timer);
+  }, [next]);
+
   const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
+    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const slide = slides[current];
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden">
-      {/* Background glow blobs */}
-      <div className="glow-blob w-[500px] h-[500px] bg-indigo-600 top-[-100px] right-[-100px]" />
-      <div className="glow-blob w-[600px] h-[600px] bg-purple-600 bottom-[-200px] left-[-200px]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.01)_0%,rgba(3,7,18,0.95)_90%)] pointer-events-none" />
-
-      {/* Grid Pattern overlay */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_50%,#000_70%,transparent_100%)] pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-        {/* Banner Pill */}
+    <section className="relative h-[520px] md:h-[580px] overflow-hidden bg-slate-900">
+      <AnimatePresence mode="wait">
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-semibold uppercase tracking-wider mb-8"
-        >
-          <Sparkles className="h-3.5 w-3.5 text-indigo-400" />
-          <span>Next-Generation AI Agency</span>
-        </motion.div>
-
-        {/* Headline */}
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.1 }}
-          className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight text-white mb-6 leading-tight max-w-5xl mx-auto"
-        >
-          We Build <span className="bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">AI Systems</span> That Run Your Operations On Autopilot
-        </motion.h1>
-
-        {/* Subtitle */}
-        <motion.p
+          key={slide.id}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.3 }}
-          className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto mb-10 leading-relaxed"
-        >
-          Eliminate manual bottlenecks. From lead intake to database updates and automated client scheduling, we construct seamless digital workflows that scale your business without increasing headcount.
-        </motion.p>
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.6 }}
+          className={`absolute inset-0 bg-gradient-to-br ${slide.gradient}`}
+        />
+      </AnimatePresence>
 
-        {/* CTA Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 mb-16"
-        >
-          <a
-            href="#audit-form"
-            onClick={(e) => handleScrollTo(e, "#audit-form")}
-            className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-xl text-base font-semibold text-white bg-indigo-600 hover:bg-indigo-500 transition-all shadow-lg shadow-indigo-500/20 hover:shadow-indigo-500/35 hover:scale-[1.02] duration-200 group"
+      <div className="absolute inset-0 hero-overlay" />
+
+      <div
+        className="absolute inset-0 opacity-10"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at 20% 50%, white 1px, transparent 1px), radial-gradient(circle at 80% 20%, white 1px, transparent 1px)",
+          backgroundSize: "60px 60px",
+        }}
+      />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col justify-center">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={slide.id}
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -24 }}
+            transition={{ duration: 0.5 }}
+            className="max-w-2xl"
           >
-            Book Free Audit
-            <ArrowRight className="ml-2.5 h-5 w-5 transition-transform duration-200 group-hover:translate-x-1" />
-          </a>
-          <a
-            href="#process"
-            onClick={(e) => handleScrollTo(e, "#process")}
-            className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 rounded-xl text-base font-semibold text-gray-300 hover:text-white glass-card hover:bg-gray-800/40 hover:scale-[1.02] duration-200"
+            <div
+              className={`inline-flex items-center gap-2 border text-green-100 text-xs font-semibold uppercase tracking-widest px-3 py-1.5 rounded mb-6 ${slide.accent}`}
+            >
+              Entrance &amp; Home Automation
+            </div>
+
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-tight mb-5">
+              {slide.title}
+            </h1>
+
+            <p className="text-lg text-green-100/90 leading-relaxed mb-8 max-w-xl">
+              {slide.subtitle}
+            </p>
+
+            <a
+              href="#contact"
+              onClick={(e) => handleScrollTo(e, "#contact")}
+              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-white text-green-800 hover:bg-green-50 font-semibold rounded-lg transition-colors text-sm group"
+            >
+              Contact Us
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </a>
+          </motion.div>
+        </AnimatePresence>
+
+        <div className="absolute bottom-8 left-4 sm:left-6 lg:left-8 flex items-center gap-3">
+          <button
+            onClick={prev}
+            aria-label="Previous slide"
+            className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/20 transition-colors"
           >
-            See How It Works
-          </a>
-        </motion.div>
-
-        {/* Dashboard Graphic Mockup */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.7 }}
-          className="relative max-w-5xl mx-auto rounded-2xl overflow-hidden border border-gray-800 shadow-2xl"
-        >
-          <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-transparent to-transparent z-10" />
-          
-          {/* Mock Window Title Bar */}
-          <div className="bg-gray-900/90 border-b border-gray-800 px-4 py-3 flex items-center justify-between">
-            <div className="flex space-x-1.5">
-              <span className="w-3 h-3 rounded-full bg-red-500/80" />
-              <span className="w-3 h-3 rounded-full bg-yellow-500/80" />
-              <span className="w-3 h-3 rounded-full bg-green-500/80" />
-            </div>
-            <div className="text-xs text-gray-500 font-mono flex items-center space-x-1.5">
-              <Bot className="w-3.5 h-3.5 text-indigo-400" />
-              <span>synapse_agent_v2.1.py</span>
-            </div>
-            <div className="w-12" />
+            <ChevronLeft className="h-5 w-5" />
+          </button>
+          <div className="flex gap-2">
+            {slides.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrent(i)}
+                aria-label={`Go to slide ${i + 1}`}
+                className={`h-2 rounded-full transition-all ${
+                  i === current ? "w-8 bg-white" : "w-2 bg-white/40 hover:bg-white/60"
+                }`}
+              />
+            ))}
           </div>
-
-          {/* Mock Dashboard Body */}
-          <div className="bg-gray-950/80 p-6 sm:p-10 font-mono text-left text-xs sm:text-sm text-gray-400 space-y-4">
-            <div className="text-indigo-400 font-semibold">[SYSTEM INITIALIZED] Initializing Synapse Workflow Engine...</div>
-            <div className="flex items-start space-x-2">
-              <span className="text-green-500 font-bold">✔</span>
-              <span>Loaded integration config: HubSpot CRM, Slack Webhooks, Google Calendar API</span>
-            </div>
-            <div className="flex items-start space-x-2">
-              <span className="text-green-500 font-bold">✔</span>
-              <span>Subscribed to PostgreSQL leads table: listening for incoming lead triggers...</span>
-            </div>
-            <div className="text-yellow-500/90 font-semibold">[TRIGGER EVENT] 22:25:18 - New Inquiry from E-commerce Business (Volume: $2.4M ARR)</div>
-            <div className="pl-6 border-l-2 border-indigo-500/30 space-y-1">
-              <div>&gt; AI model parsing client bottlenecks: "Losing 40% of leads due to manual follow-up delay"</div>
-              <div>&gt; Drafting custom integration strategy: 2-step HubSpot webhook + GPT-4o email dispatcher</div>
-              <div>&gt; Generating calendar slot availability for Discovery Call...</div>
-            </div>
-            <div className="text-indigo-400 font-semibold">[WORKFLOW COMPLETE] Lead matched. Instant booking link sent. Automated notifications routed to sales pipeline.</div>
-            <div className="animate-pulse inline-block bg-indigo-500 h-4 w-2 rounded-sm" />
-          </div>
-        </motion.div>
+          <button
+            onClick={next}
+            aria-label="Next slide"
+            className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/20 transition-colors"
+          >
+            <ChevronRight className="h-5 w-5" />
+          </button>
+        </div>
       </div>
     </section>
   );

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Zap, Menu, X, ChevronDown, Phone } from "lucide-react";
+import { Gate, Menu, X, Phone, Mail } from "lucide-react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,11 +14,11 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "Products", href: "#categories" },
-    { name: "Featured", href: "#featured" },
-    { name: "Industries", href: "#industries" },
-    { name: "Why Us", href: "#trust" },
-    { name: "Contact", href: "#rfq" },
+    { name: "About", href: "#about" },
+    { name: "Products", href: "#products" },
+    { name: "Reviews", href: "#reviews" },
+    { name: "Clients", href: "#clients" },
+    { name: "Contact", href: "#contact" },
   ];
 
   const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -29,21 +29,25 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Top info bar */}
-      <div className="bg-blue-900 text-blue-100 text-xs py-2 hidden md:block">
+      <div className="bg-green-900 text-green-100 text-xs py-2 hidden md:block">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           <div className="flex items-center gap-6">
-            <span className="flex items-center gap-1.5">
+            <a href="tel:+919787766455" className="flex items-center gap-1.5 hover:text-white transition-colors">
               <Phone className="h-3 w-3" />
-              +1 (800) 123-4567
-            </span>
-            <span>Mon–Fri: 8:00 AM – 6:00 PM</span>
+              +91 97877 66455
+            </a>
+            <span>Kalapatti, Coimbatore · Tamil Nadu</span>
           </div>
-          <span>support@apexautomation.com</span>
+          <a
+            href="mailto:info@silvergreenautomations.in"
+            className="flex items-center gap-1.5 hover:text-white transition-colors"
+          >
+            <Mail className="h-3 w-3" />
+            info@silvergreenautomations.in
+          </a>
         </div>
       </div>
 
-      {/* Main navbar */}
       <nav
         className={`sticky top-0 z-50 bg-white transition-shadow duration-200 ${
           scrolled ? "shadow-md" : "shadow-sm"
@@ -51,50 +55,46 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            {/* Logo */}
             <div
               className="flex items-center gap-2.5 cursor-pointer"
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             >
-              <div className="p-1.5 bg-blue-800 rounded">
-                <Zap className="h-5 w-5 text-white" />
+              <div className="p-1.5 bg-green-700 rounded">
+                <Gate className="h-5 w-5 text-white" />
               </div>
               <div className="leading-tight">
                 <span className="block text-base font-bold text-slate-900 tracking-tight">
-                  Apex Automation
+                  Silver Green
                 </span>
-                <span className="block text-[10px] text-blue-700 font-semibold uppercase tracking-widest">
-                  &amp; Electronics
+                <span className="block text-[10px] text-green-700 font-semibold uppercase tracking-widest">
+                  Automations
                 </span>
               </div>
             </div>
 
-            {/* Desktop nav */}
             <div className="hidden md:flex items-center gap-8">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleScrollTo(e, link.href)}
-                  className="text-sm font-medium text-slate-600 hover:text-blue-800 transition-colors"
+                  className="text-sm font-medium text-slate-600 hover:text-green-700 transition-colors"
                 >
                   {link.name}
                 </a>
               ))}
             </div>
 
-            {/* Desktop CTA */}
             <div className="hidden md:flex items-center gap-3">
               <a
-                href="#rfq"
-                onClick={(e) => handleScrollTo(e, "#rfq")}
+                href="#contact"
+                onClick={(e) => handleScrollTo(e, "#contact")}
                 className="btn-primary text-sm"
               >
-                Request a Quote
+                Contact Us
               </a>
             </div>
 
-            {/* Mobile toggle */}
             <button
               className="md:hidden p-2 text-slate-600 hover:text-slate-900"
               onClick={() => setIsOpen(!isOpen)}
@@ -105,7 +105,6 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile menu */}
         {isOpen && (
           <div className="md:hidden border-t border-slate-200 bg-white shadow-lg">
             <div className="px-4 py-4 space-y-3">
@@ -114,18 +113,24 @@ export default function Navbar() {
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleScrollTo(e, link.href)}
-                  className="block text-sm font-medium text-slate-700 hover:text-blue-800 py-1"
+                  className="block text-sm font-medium text-slate-700 hover:text-green-700 py-1"
                 >
                   {link.name}
                 </a>
               ))}
               <div className="pt-3 border-t border-slate-100">
                 <a
-                  href="#rfq"
-                  onClick={(e) => handleScrollTo(e, "#rfq")}
-                  className="btn-primary w-full text-center text-sm"
+                  href="tel:+919787766455"
+                  className="block text-sm text-green-700 font-semibold py-1"
                 >
-                  Request a Quote
+                  Call: +91 97877 66455
+                </a>
+                <a
+                  href="#contact"
+                  onClick={(e) => handleScrollTo(e, "#contact")}
+                  className="btn-primary w-full text-center text-sm mt-3"
+                >
+                  Contact Us
                 </a>
               </div>
             </div>
