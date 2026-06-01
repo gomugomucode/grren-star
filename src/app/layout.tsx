@@ -13,10 +13,20 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Synapse Automations | Enterprise AI & Workflow Automation Agency",
-  description: "Supercharge your business operations with bespoke AI systems, CRM database syncs, and automated lead follow-up workflows. Stop revenue leakage and scale efficiently.",
-  keywords: ["AI Automation", "Workflow Automation", "CRM Integration", "Lead Follow-up Systems", "Chatbot Setup", "Business Autopilot"],
-  authors: [{ name: "Synapse Automations Team" }],
+  title: "Apex Automation & Electronics | Industrial Automation Solutions",
+  description:
+    "Trusted supplier of industrial automation products, PLC systems, sensors, controllers, and electronics components. Serving manufacturing, energy, and infrastructure sectors.",
+  keywords: [
+    "Industrial Automation",
+    "PLC Systems",
+    "Sensors and Controllers",
+    "Industrial Electronics",
+    "Power Systems",
+    "Automation Modules",
+    "RFQ",
+    "Factory Automation",
+  ],
+  authors: [{ name: "Apex Automation & Electronics" }],
 };
 
 export default function RootLayout({
@@ -29,7 +39,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased scroll-smooth`}
     >
-      <body className="min-h-full flex flex-col bg-background text-foreground">
+      <body className="min-h-full flex flex-col bg-white text-slate-900">
         {children}
       </body>
     </html>
