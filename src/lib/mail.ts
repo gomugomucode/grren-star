@@ -76,3 +76,59 @@ export async function sendRfqNotification({
 
   return { success: true, method: "console" };
 }
+
+interface SendLeadNotificationParams {
+  name: string;
+  email: string;
+  phone: string;
+  businessType: string;
+  message: string;
+}
+
+export async function sendLeadNotification({
+  name,
+  email,
+  phone,
+  businessType,
+  message,
+}: SendLeadNotificationParams) {
+  const host = process.env.SMTP_HOST;
+  const port = parseInt(process.env.SMTP_PORT || "587", 10);
+  const user = process.env.SMTP_USER;
+  const pass = process.env.SMTP_PASS;
+  const adminEmail = process.env.ADMIN_EMAIL || "info@silvergreenautomations.in";
+
+  const isSMTPConfigured =
+    host &&
+    host !== "smtp.mailtrap.io" &&
+    user &&
+    user !== "placeholder_user" &&
+    pass &&
+    pass !== "placeholder_password";
+
+  if (isSMTPConfigured) {
+    try {
+      const transporter = nodemailer.createTransport({ host, port, auth: { user, pass } });
+      await transporter.sendMail({
+        from: `"Silver Green Automations" <${user}>`,
+        to: adminEmail,
+        subject: `New Enquiry: ${businessType} – ${name}`,
+        text: `Enquiry from ${name}\nEmail: ${email}\nPhone: ${phone}\nProduct: ${businessType}\nMessage: ${message}`,
+        html: `<p><strong>${name}</strong> (${email}, ${phone})</p><p><strong>Product:</strong> ${businessType}</p><p>${message}</p>`,
+      });
+      return { success: true, method: "smtp" };
+    } catch (error) {
+      console.error("[SMTP Error]", error);
+    }
+  }
+
+  console.log("=".repeat(70));
+  console.log("📋 SIMULATED ENQUIRY EMAIL (SMTP not configured)");
+  console.log(`To: ${adminEmail}`);
+  console.log(`Name: ${name} | Email: ${email} | Phone: ${phone}`);
+  console.log(`Product: ${businessType}`);
+  console.log(`Message: ${message}`);
+  console.log("=".repeat(70));
+
+  return { success: true, method: "console" };
+}

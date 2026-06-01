@@ -1,6 +1,6 @@
 "use client";
 
-import { Gate, Mail, Phone, MapPin } from "lucide-react";
+import { DoorOpen, Mail, Phone, MapPin } from "lucide-react";
 
 export default function Footer() {
   const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -15,7 +15,7 @@ export default function Footer() {
           <div className="space-y-4 md:col-span-2">
             <div className="flex items-center gap-2.5">
               <div className="p-1.5 bg-green-700 rounded">
-                <Gate className="h-5 w-5 text-white" />
+                <DoorOpen className="h-5 w-5 text-white" />
               </div>
               <span className="text-lg font-bold text-white">
                 Silver Green <span className="text-green-400">Automations</span>

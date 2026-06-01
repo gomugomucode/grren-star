@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Gate, Menu, X, Phone, Mail } from "lucide-react";
+import { DoorOpen, Menu, X, Phone, Mail } from "lucide-react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -60,7 +60,7 @@ export default function Navbar() {
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             >
               <div className="p-1.5 bg-green-700 rounded">
-                <Gate className="h-5 w-5 text-white" />
+                <DoorOpen className="h-5 w-5 text-white" />
               </div>
               <div className="leading-tight">
                 <span className="block text-base font-bold text-slate-900 tracking-tight">

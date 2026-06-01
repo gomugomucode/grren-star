@@ -20,3 +20,13 @@ model RfqRequest {
   message         String
   createdAt       DateTime @default(now())
 }
+
+model Lead {
+  id           String   @id @default(uuid())
+  name         String
+  email        String
+  phone        String
+  businessType String
+  message      String
+  createdAt    DateTime @default(now())
+}
