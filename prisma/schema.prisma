@@ -9,12 +9,14 @@ datasource db {
   provider = "postgresql"
 }
 
-model Lead {
-  id           String   @id @default(uuid())
-  name         String
-  email        String
-  phone        String
-  businessType String
-  message      String   // Stores the biggest bottleneck
-  createdAt    DateTime @default(now())
+model RfqRequest {
+  id              String   @id @default(uuid())
+  name            String
+  company         String
+  email           String
+  phone           String
+  productInterest String
+  quantity        Int
+  message         String
+  createdAt       DateTime @default(now())
 }
