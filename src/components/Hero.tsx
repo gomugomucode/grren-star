@@ -2,34 +2,36 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import OrderButtons from "@/components/OrderButtons";
+import { siteConfig } from "@/lib/site-config";
 
 const slides = [
   {
     id: 1,
     title: "Sliding Gate Automations",
-    subtitle: "Make it easy to control the gate with Silver Green Automations",
+    subtitle: `Quality sliding gate motors and kits — order across Nepal from ${siteConfig.name}`,
     gradient: "from-green-900 via-green-800 to-slate-900",
     accent: "bg-green-500/20 border-green-400/30",
   },
   {
     id: 2,
     title: "Swing Gate Automations",
-    subtitle: "Make your gate smarter with Silver Green Automations",
+    subtitle: "Make your gate smarter — call or WhatsApp Greenstar Suppliers for fast delivery in Nepal",
     gradient: "from-emerald-900 via-green-800 to-slate-900",
     accent: "bg-emerald-500/20 border-emerald-400/30",
   },
   {
     id: 3,
     title: "Garage Door Automations",
-    subtitle: "Make your parking smarter with Silver Green Automations",
+    subtitle: "Garage door motors and accessories supplied nationwide — easy ordering by phone or WhatsApp",
     gradient: "from-teal-900 via-green-800 to-slate-900",
     accent: "bg-teal-500/20 border-teal-400/30",
   },
   {
     id: 4,
     title: "Boom Barrier",
-    subtitle: "Make your commercial space smarter with Silver Green Automations",
+    subtitle: "Commercial boom barriers for parking and access control — available for order throughout Nepal",
     gradient: "from-green-950 via-green-900 to-slate-900",
     accent: "bg-lime-500/20 border-lime-400/30",
   },
@@ -51,15 +53,10 @@ export default function Hero() {
     return () => clearInterval(timer);
   }, [next]);
 
-  const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
-  };
-
   const slide = slides[current];
 
   return (
-    <section className="relative h-[520px] md:h-[580px] overflow-hidden bg-slate-900">
+    <section className="relative h-[540px] md:h-[600px] overflow-hidden bg-slate-900">
       <AnimatePresence mode="wait">
         <motion.div
           key={slide.id}
@@ -95,7 +92,7 @@ export default function Hero() {
             <div
               className={`inline-flex items-center gap-2 border text-green-100 text-xs font-semibold uppercase tracking-widest px-3 py-1.5 rounded mb-6 ${slide.accent}`}
             >
-              Entrance &amp; Home Automation
+              Nepal-wide supply · Call or WhatsApp to order
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-tight mb-5">
@@ -106,14 +103,7 @@ export default function Hero() {
               {slide.subtitle}
             </p>
 
-            <a
-              href="#contact"
-              onClick={(e) => handleScrollTo(e, "#contact")}
-              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-white text-green-800 hover:bg-green-50 font-semibold rounded-lg transition-colors text-sm group"
-            >
-              Contact Us
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </a>
+            <OrderButtons size="lg" />
           </motion.div>
         </AnimatePresence>
 

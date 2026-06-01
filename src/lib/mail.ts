@@ -1,4 +1,5 @@
 import nodemailer from "nodemailer";
+import { siteConfig } from "./site-config";
 
 interface SendRfqNotificationParams {
   name: string;
@@ -96,7 +97,7 @@ export async function sendLeadNotification({
   const port = parseInt(process.env.SMTP_PORT || "587", 10);
   const user = process.env.SMTP_USER;
   const pass = process.env.SMTP_PASS;
-  const adminEmail = process.env.ADMIN_EMAIL || "info@silvergreenautomations.in";
+  const adminEmail = process.env.ADMIN_EMAIL || siteConfig.email;
 
   const isSMTPConfigured =
     host &&
@@ -110,7 +111,7 @@ export async function sendLeadNotification({
     try {
       const transporter = nodemailer.createTransport({ host, port, auth: { user, pass } });
       await transporter.sendMail({
-        from: `"Silver Green Automations" <${user}>`,
+        from: `"${siteConfig.name}" <${user}>`,
         to: adminEmail,
         subject: `New Enquiry: ${businessType} – ${name}`,
         text: `Enquiry from ${name}\nEmail: ${email}\nPhone: ${phone}\nProduct: ${businessType}\nMessage: ${message}`,

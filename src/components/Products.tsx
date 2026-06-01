@@ -18,8 +18,11 @@ import {
   Wind,
   Flame,
   Package,
+  Phone,
+  MessageCircle,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
+import { getTelLink, getWhatsAppLink, siteConfig } from "@/lib/site-config";
 
 interface Product {
   icon: LucideIcon;
@@ -126,11 +129,6 @@ const products: Product[] = [
 ];
 
 export default function Products() {
-  const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
-  };
-
   return (
     <section id="products" className="py-20 bg-slate-50 border-y border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -139,10 +137,10 @@ export default function Products() {
             <Package className="h-3 w-3" />
             Our Products
           </div>
-          <h2 className="text-3xl font-bold text-slate-900">Entrance &amp; Home Automation Solutions</h2>
+          <h2 className="text-3xl font-bold text-slate-900">Entrance &amp; Home Automation Supplies</h2>
           <p className="text-slate-500 mt-3 text-sm leading-relaxed">
-            From automatic gates and boom barriers to complete smart home and security systems —
-            we design, supply, and install across Tamil Nadu.
+            Gate motors, boom barriers, rolling shutters, and smart home systems — supplied across{" "}
+            {siteConfig.coverage.toLowerCase()}. Call or WhatsApp to order any product below.
           </p>
         </div>
 
@@ -174,13 +172,26 @@ export default function Products() {
                   <h3 className="font-bold text-slate-800 text-base mb-2">{product.title}</h3>
                   <p className="text-sm text-slate-500 leading-relaxed">{product.description}</p>
                 </div>
-                <a
-                  href="#contact"
-                  onClick={(e) => handleScrollTo(e, "#contact")}
-                  className="mt-auto text-sm font-semibold text-green-700 hover:text-green-900 transition-colors"
-                >
-                  Get a quote →
-                </a>
+                <div className="mt-auto flex gap-2 pt-2">
+                  <a
+                    href={getTelLink()}
+                    className="flex-1 inline-flex items-center justify-center gap-1.5 py-2 text-xs font-semibold text-green-800 border border-green-300 hover:bg-green-50 rounded transition-colors"
+                  >
+                    <Phone className="h-3.5 w-3.5" />
+                    Call
+                  </a>
+                  <a
+                    href={getWhatsAppLink(
+                      `Hello ${siteConfig.name}, I want to order: ${product.title}. Please share price and delivery details for Nepal.`
+                    )}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 inline-flex items-center justify-center gap-1.5 py-2 text-xs font-semibold text-white bg-[#25D366] hover:bg-[#1fb855] rounded transition-colors"
+                  >
+                    <MessageCircle className="h-3.5 w-3.5" />
+                    WhatsApp
+                  </a>
+                </div>
               </motion.article>
             );
           })}

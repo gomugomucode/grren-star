@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { siteConfig } from "@/lib/site-config";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,21 +14,19 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Silver Green Automations | Entrance & Home Automation Coimbatore",
-  description:
-    "Leading entrance and home automation company in Coimbatore. Automatic sliding gates, swing gates, boom barriers, rolling shutters, garage doors, and smart home solutions across Tamil Nadu.",
+  title: `${siteConfig.name} | Entrance & Home Automation Nepal`,
+  description: siteConfig.description,
   keywords: [
-    "Entrance Automation",
-    "Home Automation",
-    "Sliding Gate Automation",
-    "Swing Gate Motor",
-    "Boom Barrier",
+    "Greenstar Suppliers",
+    "Entrance Automation Nepal",
+    "Home Automation Nepal",
+    "Sliding Gate Motor",
+    "Boom Barrier Nepal",
     "Rolling Shutter",
-    "Garage Door Automation",
-    "Coimbatore",
-    "Silver Green Automations",
+    "Gate Automation Kathmandu",
+    "WhatsApp Order",
   ],
-  authors: [{ name: "Silver Green Automations" }],
+  authors: [{ name: siteConfig.name }],
 };
 
 export default function RootLayout({

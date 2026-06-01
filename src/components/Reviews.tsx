@@ -6,7 +6,7 @@ import { Quote, Star } from "lucide-react";
 const reviews = [
   {
     name: "Balachandran",
-    text: "Whenever I need expert advice about technology products, I call Silver Green Automations. They have an impressive amount of knowledge and a knack for helping the technically-challenged make sense of it all.",
+    text: "Whenever I need expert advice about automation products, I call Greenstar Suppliers. They have impressive knowledge and help me choose the right gate motor every time.",
   },
   {
     name: "Ram Prasad",

@@ -1,36 +1,113 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Greenstar Suppliers
+
+A Next.js website for **Greenstar Suppliers** — entrance and home automation product supply across **Nepal**. Customers can browse products, submit enquiries, **call to order**, or **WhatsApp to order**.
+
+## Features
+
+- Hero carousel for gate automation, boom barriers, and garage products
+- Product catalogue with per-product **Call** and **WhatsApp** order buttons
+- Floating WhatsApp button on every page
+- Contact / enquiry form with API backend
+- Nepal-focused branding and delivery messaging
+
+## Tech Stack
+
+- [Next.js 16](https://nextjs.org) (App Router)
+- React 19 + TypeScript
+- Tailwind CSS 4
+- Framer Motion
+- Prisma + PostgreSQL (optional, for storing enquiries)
+- Nodemailer (optional, for email notifications)
 
 ## Getting Started
 
-First, run the development server:
+### 1. Install dependencies
+
+```bash
+npm install
+```
+
+### 2. Configure contact details
+
+Update your phone and WhatsApp numbers in `.env.local`:
+
+```env
+NEXT_PUBLIC_PHONE=+9779801234567
+NEXT_PUBLIC_PHONE_DISPLAY=+977 980-1234567
+NEXT_PUBLIC_WHATSAPP=9779801234567
+NEXT_PUBLIC_EMAIL=info@greenstarsuppliers.com.np
+```
+
+| Variable | Description |
+|----------|-------------|
+| `NEXT_PUBLIC_PHONE` | Used for `tel:` links (include country code) |
+| `NEXT_PUBLIC_PHONE_DISPLAY` | Shown on the website |
+| `NEXT_PUBLIC_WHATSAPP` | WhatsApp number digits only, with country code (no `+`) |
+| `NEXT_PUBLIC_EMAIL` | Contact email shown on site |
+
+Defaults are in `src/lib/site-config.ts` if env vars are not set.
+
+### 3. Run the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 4. Production build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+src/
+├── app/
+│   ├── page.tsx          # Homepage
+│   ├── layout.tsx        # Site metadata & fonts
+│   └── api/leads/        # Enquiry form API
+├── components/
+│   ├── Navbar.tsx
+│   ├── Hero.tsx
+│   ├── Products.tsx
+│   ├── ContactForm.tsx
+│   ├── OrderButtons.tsx  # Reusable Call + WhatsApp buttons
+│   └── WhatsAppFloat.tsx # Fixed WhatsApp order button
+└── lib/
+    └── site-config.ts    # Brand name, phone, WhatsApp, Nepal details
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Ordering Flow
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. **Call** — taps the green Call button (`tel:` link)
+2. **WhatsApp** — opens chat with a pre-filled order message
+3. **Enquiry form** — submits to `/api/leads` (saved to DB if configured)
 
-## Deploy on Vercel
+## Optional: Database & Email
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+For full enquiry storage, set up PostgreSQL and add to `.env`:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```env
+DATABASE_URL=postgresql://...
+ADMIN_EMAIL=your@email.com
+SMTP_HOST=...
+SMTP_PORT=587
+SMTP_USER=...
+SMTP_PASS=...
+```
+
+Then run:
+
+```bash
+npx prisma migrate dev
+```
+
+If the database is not configured, the API still returns success and logs enquiries to the console.
+
+## License
+
+Private project — Greenstar Suppliers.

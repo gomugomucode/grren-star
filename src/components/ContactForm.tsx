@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { AlertCircle, CheckCircle2, Loader2, Send, Phone, MapPin, Mail } from "lucide-react";
+import OrderButtons from "@/components/OrderButtons";
+import { getTelLink, siteConfig } from "@/lib/site-config";
 
 interface ContactFormInputs {
   name: string;
@@ -66,12 +68,15 @@ export default function ContactForm() {
     <section id="contact" className="py-20 bg-white border-t border-slate-200">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <div className="section-label mb-3 mx-auto w-fit">Enquiry</div>
+          <div className="section-label mb-3 mx-auto w-fit">Order &amp; Enquiry</div>
           <h2 className="text-3xl font-bold text-slate-900">Get in Touch With Us</h2>
           <p className="text-slate-500 mt-3 text-sm">
-            Describe your requirement and our team will respond with the best quote for your
-            entrance or home automation project.
+            For the fastest response, call or WhatsApp to order. You can also submit the form
+            below and we will reply with pricing and delivery details for your location in Nepal.
           </p>
+          <div className="mt-6 flex justify-center">
+            <OrderButtons />
+          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
@@ -81,38 +86,30 @@ export default function ContactForm() {
               <ul className="space-y-4 text-sm text-slate-600">
                 <li className="flex gap-3">
                   <MapPin className="h-5 w-5 text-green-700 flex-shrink-0 mt-0.5" />
-                  <span>
-                    Sf.No.170, Shiva Nagar, Kalapatti,
-                    <br />
-                    Balaji Catering Back Side,
-                    <br />
-                    Coimbatore – 641048, Tamil Nadu, India
-                  </span>
+                  <span>{siteConfig.address.full}</span>
                 </li>
                 <li className="flex gap-3 items-center">
                   <Phone className="h-5 w-5 text-green-700 flex-shrink-0" />
-                  <a href="tel:+919787766455" className="hover:text-green-700 font-semibold">
-                    +91 97877 66455
+                  <a href={getTelLink()} className="hover:text-green-700 font-semibold">
+                    {siteConfig.phoneDisplay}
                   </a>
                 </li>
                 <li className="flex gap-3 items-center">
                   <Mail className="h-5 w-5 text-green-700 flex-shrink-0" />
-                  <a
-                    href="mailto:info@silvergreenautomations.in"
-                    className="hover:text-green-700"
-                  >
-                    info@silvergreenautomations.in
+                  <a href={`mailto:${siteConfig.email}`} className="hover:text-green-700">
+                    {siteConfig.email}
                   </a>
                 </li>
               </ul>
             </div>
 
             <div className="bg-green-700 text-white rounded-lg p-6">
-              <h3 className="font-bold mb-2">Operations Across Tamil Nadu</h3>
-              <p className="text-green-100 text-sm leading-relaxed">
-                Gate fabrication &amp; automation, rolling shutter installation, glass door
-                automation, boom barriers, and complete smart home solutions.
+              <h3 className="font-bold mb-2">Delivery Across {siteConfig.coverage}</h3>
+              <p className="text-green-100 text-sm leading-relaxed mb-4">
+                Gate motors, boom barriers, rolling shutters, and smart home products delivered
+                to Kathmandu, Pokhara, Biratnagar, and cities nationwide.
               </p>
+              <p className="text-green-100 text-xs">{siteConfig.businessHours}</p>
             </div>
           </div>
 
@@ -125,11 +122,12 @@ export default function ContactForm() {
                   </div>
                   <h3 className="text-xl font-bold text-slate-900">Enquiry Sent Successfully</h3>
                   <p className="text-sm text-slate-500 max-w-sm mx-auto">
-                    Thank you. Your enquiry has been sent successfully. We will contact you shortly.
+                    Thank you. We will contact you shortly. For urgent orders, call or WhatsApp us directly.
                   </p>
+                  <OrderButtons className="justify-center" size="sm" />
                   <button
                     onClick={() => setSubmitSuccess(false)}
-                    className="text-sm text-green-700 hover:underline font-medium"
+                    className="block mx-auto text-sm text-green-700 hover:underline font-medium"
                   >
                     Send another enquiry
                   </button>
@@ -184,7 +182,7 @@ export default function ContactForm() {
                       </label>
                       <input
                         type="tel"
-                        placeholder="+91 XXXXX XXXXX"
+                        placeholder="+977 98XXXXXXXX"
                         {...register("phone", { required: "Phone is required", minLength: { value: 7, message: "Min 7 digits" } })}
                         className="w-full border border-slate-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 bg-white"
                       />
@@ -213,11 +211,11 @@ export default function ContactForm() {
 
                   <div>
                     <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">
-                      Describe Your Requirement <span className="text-red-500">*</span>
+                      Delivery City &amp; Requirements <span className="text-red-500">*</span>
                     </label>
                     <textarea
                       rows={4}
-                      placeholder="What are you looking for? Features, specifications, application, minimum order quantity, etc."
+                      placeholder="City in Nepal, product details, quantity, installation needs, etc."
                       {...register("message", { required: "Please describe your requirement", minLength: { value: 5, message: "Min 5 characters" } })}
                       className="w-full border border-slate-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 bg-white resize-y min-h-[100px]"
                     />
@@ -234,7 +232,7 @@ export default function ContactForm() {
                     {isSubmitting ? (
                       <><Loader2 className="h-4 w-4 animate-spin" /> Sending...</>
                     ) : (
-                      <><Send className="h-4 w-4" /> Send Enquiry</>
+                      <><Send className="h-4 w-4" /> Submit Enquiry</>
                     )}
                   </button>
                 </form>

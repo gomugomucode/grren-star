@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { DoorOpen, Menu, X, Phone, Mail } from "lucide-react";
+import { Leaf, Menu, X, Phone, Mail, MessageCircle } from "lucide-react";
+import { getTelLink, getWhatsAppLink, siteConfig } from "@/lib/site-config";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,7 +18,6 @@ export default function Navbar() {
     { name: "About", href: "#about" },
     { name: "Products", href: "#products" },
     { name: "Reviews", href: "#reviews" },
-    { name: "Clients", href: "#clients" },
     { name: "Contact", href: "#contact" },
   ];
 
@@ -32,18 +32,18 @@ export default function Navbar() {
       <div className="bg-green-900 text-green-100 text-xs py-2 hidden md:block">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           <div className="flex items-center gap-6">
-            <a href="tel:+919787766455" className="flex items-center gap-1.5 hover:text-white transition-colors">
+            <a href={getTelLink()} className="flex items-center gap-1.5 hover:text-white transition-colors">
               <Phone className="h-3 w-3" />
-              +91 97877 66455
+              {siteConfig.phoneDisplay}
             </a>
-            <span>Kalapatti, Coimbatore · Tamil Nadu</span>
+            <span>{siteConfig.address.full} · {siteConfig.coverage}</span>
           </div>
           <a
-            href="mailto:info@silvergreenautomations.in"
+            href={`mailto:${siteConfig.email}`}
             className="flex items-center gap-1.5 hover:text-white transition-colors"
           >
             <Mail className="h-3 w-3" />
-            info@silvergreenautomations.in
+            {siteConfig.email}
           </a>
         </div>
       </div>
@@ -60,19 +60,19 @@ export default function Navbar() {
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             >
               <div className="p-1.5 bg-green-700 rounded">
-                <DoorOpen className="h-5 w-5 text-white" />
+                <Leaf className="h-5 w-5 text-white" />
               </div>
               <div className="leading-tight">
                 <span className="block text-base font-bold text-slate-900 tracking-tight">
-                  Silver Green
+                  {siteConfig.shortName}
                 </span>
                 <span className="block text-[10px] text-green-700 font-semibold uppercase tracking-widest">
-                  Automations
+                  Suppliers
                 </span>
               </div>
             </div>
 
-            <div className="hidden md:flex items-center gap-8">
+            <div className="hidden lg:flex items-center gap-8">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
@@ -85,13 +85,22 @@ export default function Navbar() {
               ))}
             </div>
 
-            <div className="hidden md:flex items-center gap-3">
+            <div className="hidden md:flex items-center gap-2">
               <a
-                href="#contact"
-                onClick={(e) => handleScrollTo(e, "#contact")}
-                className="btn-primary text-sm"
+                href={getTelLink()}
+                className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-green-800 border border-green-700 rounded-lg hover:bg-green-50 transition-colors"
               >
-                Contact Us
+                <Phone className="h-3.5 w-3.5" />
+                Call
+              </a>
+              <a
+                href={getWhatsAppLink()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-white bg-[#25D366] hover:bg-[#1fb855] rounded-lg transition-colors"
+              >
+                <MessageCircle className="h-3.5 w-3.5" />
+                WhatsApp
               </a>
             </div>
 
@@ -118,19 +127,22 @@ export default function Navbar() {
                   {link.name}
                 </a>
               ))}
-              <div className="pt-3 border-t border-slate-100">
+              <div className="pt-3 border-t border-slate-100 space-y-2">
                 <a
-                  href="tel:+919787766455"
-                  className="block text-sm text-green-700 font-semibold py-1"
+                  href={getTelLink()}
+                  className="flex items-center justify-center gap-2 w-full py-2.5 text-sm font-semibold text-green-800 border border-green-700 rounded-lg"
                 >
-                  Call: +91 97877 66455
+                  <Phone className="h-4 w-4" />
+                  Call to Order — {siteConfig.phoneDisplay}
                 </a>
                 <a
-                  href="#contact"
-                  onClick={(e) => handleScrollTo(e, "#contact")}
-                  className="btn-primary w-full text-center text-sm mt-3"
+                  href={getWhatsAppLink()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2 w-full py-2.5 text-sm font-semibold text-white bg-[#25D366] rounded-lg"
                 >
-                  Contact Us
+                  <MessageCircle className="h-4 w-4" />
+                  WhatsApp to Order
                 </a>
               </div>
             </div>

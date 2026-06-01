@@ -1,6 +1,7 @@
 "use client";
 
-import { DoorOpen, Mail, Phone, MapPin } from "lucide-react";
+import { Leaf, Mail, Phone, MapPin, MessageCircle } from "lucide-react";
+import { getTelLink, getWhatsAppLink, siteConfig } from "@/lib/site-config";
 
 export default function Footer() {
   const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -15,16 +16,34 @@ export default function Footer() {
           <div className="space-y-4 md:col-span-2">
             <div className="flex items-center gap-2.5">
               <div className="p-1.5 bg-green-700 rounded">
-                <DoorOpen className="h-5 w-5 text-white" />
+                <Leaf className="h-5 w-5 text-white" />
               </div>
               <span className="text-lg font-bold text-white">
-                Silver Green <span className="text-green-400">Automations</span>
+                {siteConfig.shortName}{" "}
+                <span className="text-green-400">Suppliers</span>
               </span>
             </div>
             <p className="text-sm text-slate-400 leading-relaxed max-w-md">
-              Entrance automation and home automation company in Coimbatore, Tamil Nadu.
-              Seamless integration of technology with day-to-day living for homes and factories.
+              {siteConfig.description}
             </p>
+            <div className="flex flex-wrap gap-3 pt-2">
+              <a
+                href={getTelLink()}
+                className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-2 rounded-lg border border-slate-700 hover:border-green-500 hover:text-green-400 transition-colors"
+              >
+                <Phone className="h-3.5 w-3.5" />
+                Call to Order
+              </a>
+              <a
+                href={getWhatsAppLink()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-2 rounded-lg bg-[#25D366] text-white hover:bg-[#1fb855] transition-colors"
+              >
+                <MessageCircle className="h-3.5 w-3.5" />
+                WhatsApp to Order
+              </a>
+            </div>
           </div>
 
           <div>
@@ -54,24 +73,18 @@ export default function Footer() {
             <ul className="space-y-3 text-sm text-slate-400">
               <li className="flex gap-2">
                 <MapPin className="h-4 w-4 text-green-500 flex-shrink-0 mt-0.5" />
-                <span>
-                  Sf.No.170, Shiva Nagar, Kalapatti,
-                  Coimbatore – 641048, Tamil Nadu
-                </span>
+                <span>{siteConfig.address.full}</span>
               </li>
               <li className="flex gap-2 items-center">
                 <Phone className="h-4 w-4 text-green-500 flex-shrink-0" />
-                <a href="tel:+919787766455" className="hover:text-green-400 transition-colors">
-                  +91 97877 66455
+                <a href={getTelLink()} className="hover:text-green-400 transition-colors">
+                  {siteConfig.phoneDisplay}
                 </a>
               </li>
               <li className="flex gap-2 items-center">
                 <Mail className="h-4 w-4 text-green-500 flex-shrink-0" />
-                <a
-                  href="mailto:info@silvergreenautomations.in"
-                  className="hover:text-green-400 transition-colors"
-                >
-                  info@silvergreenautomations.in
+                <a href={`mailto:${siteConfig.email}`} className="hover:text-green-400 transition-colors">
+                  {siteConfig.email}
                 </a>
               </li>
             </ul>
@@ -79,8 +92,8 @@ export default function Footer() {
         </div>
 
         <div className="pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
-          <p>© {new Date().getFullYear()} Silver Green Automations. All Rights Reserved.</p>
-          <p>Entrance &amp; Home Automation · Coimbatore, India</p>
+          <p>© {new Date().getFullYear()} {siteConfig.name}. All Rights Reserved.</p>
+          <p>Entrance &amp; Home Automation Supplies · {siteConfig.address.country}</p>
         </div>
       </div>
     </footer>

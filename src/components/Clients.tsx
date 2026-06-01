@@ -21,7 +21,7 @@ export default function Clients() {
           <div className="section-label mb-3 mx-auto w-fit">Trusted By</div>
           <h2 className="text-3xl font-bold text-slate-900">Our Valuable Clients</h2>
           <p className="text-slate-500 mt-3 text-sm">
-            Serving residential, commercial, and industrial clients across Tamil Nadu with
+            Serving residential, commercial, and industrial clients across Nepal with
             reliable entrance and home automation solutions.
           </p>
         </div>

@@ -2,12 +2,13 @@
 
 import { motion } from "framer-motion";
 import { Building2, MapPin, Award, Users } from "lucide-react";
+import { siteConfig } from "@/lib/site-config";
 
 const highlights = [
-  { icon: Building2, label: "Founded", value: "2017" },
-  { icon: MapPin, label: "Location", value: "Coimbatore, TN" },
-  { icon: Award, label: "Specialization", value: "Entrance Automation" },
-  { icon: Users, label: "Coverage", value: "All Tamil Nadu" },
+  { icon: Building2, label: "Business", value: "Suppliers" },
+  { icon: MapPin, label: "Location", value: siteConfig.address.city },
+  { icon: Award, label: "Specialization", value: "Automation" },
+  { icon: Users, label: "Coverage", value: siteConfig.coverage },
 ];
 
 const usageAreas = [
@@ -32,18 +33,18 @@ export default function AboutSection() {
           >
             <div className="section-label mb-4">About Us</div>
             <h2 className="text-3xl font-bold text-slate-900 mb-5">
-              About Silver Green Automations
+              About {siteConfig.name}
             </h2>
             <p className="text-slate-600 leading-relaxed mb-4">
-              Silver Green Automations is an entrance automation and home automation company
-              established with the dedication to achieve seamless integration of technology
-              with day-to-day living in every home and factory — creating a lifestyle totally
-              unique to each individual and family.
+              {siteConfig.name} is a trusted supplier of entrance automation and home
+              automation products in Nepal. We help homes, businesses, and factories integrate
+              modern gate motors, barriers, shutters, and smart home systems with reliable
+              products at competitive prices.
             </p>
             <p className="text-slate-600 leading-relaxed mb-6">
-              Our willingness to understand every client&apos;s specific requirement, combined
-              with our team&apos;s expertise, makes us the obvious choice for smart home and
-              entrance automation seekers across Tamil Nadu.
+              Order quickly by phone or WhatsApp — our team understands local requirements
+              and delivers across {siteConfig.coverage.toLowerCase()} with dedicated support
+              from {siteConfig.address.city}.
             </p>
 
             <div className="flex flex-wrap gap-2">
@@ -68,10 +69,7 @@ export default function AboutSection() {
             {highlights.map((item) => {
               const Icon = item.icon;
               return (
-                <div
-                  key={item.label}
-                  className="industrial-card p-6 text-center"
-                >
+                <div key={item.label} className="industrial-card p-6 text-center">
                   <div className="w-10 h-10 mx-auto mb-3 rounded-lg bg-green-50 border border-green-200 flex items-center justify-center text-green-700">
                     <Icon className="h-5 w-5" />
                   </div>
@@ -82,11 +80,11 @@ export default function AboutSection() {
             })}
 
             <div className="col-span-2 industrial-card p-6 bg-green-50 border-green-200">
-              <h3 className="font-bold text-slate-800 mb-2">Our Expertise</h3>
+              <h3 className="font-bold text-slate-800 mb-2">How to Order</h3>
               <p className="text-sm text-slate-600 leading-relaxed">
-                Gate fabrication &amp; automation, rolling shutter fabrication &amp; automation,
-                glass door automation, boom barriers, and complete home automation solutions
-                using premium Italian DITEC motors and European-standard components.
+                Call {siteConfig.phoneDisplay} or message us on WhatsApp with your product
+                name, quantity, and delivery location anywhere in Nepal. We supply gate motors,
+                boom barriers, rolling shutters, and complete home automation kits.
               </p>
             </div>
           </motion.div>
