@@ -10,9 +10,9 @@ export const siteConfig = {
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP || "9779801234567",
   email: process.env.NEXT_PUBLIC_EMAIL || "info@greenstarsuppliers.com.np",
   address: {
-    city: "Kathmandu",
+    city: "Butwal",
     country: "Nepal",
-    full: "Kathmandu, Nepal",
+    full: "Butwal, Nepal",
   },
   coverage: "All Nepal",
   businessHours: "Sun–Fri: 9:00 AM – 6:00 PM NPT",

@@ -107,7 +107,7 @@ export default function ContactForm() {
               <h3 className="font-bold mb-2">Delivery Across {siteConfig.coverage}</h3>
               <p className="text-green-100 text-sm leading-relaxed mb-4">
                 Gate motors, boom barriers, rolling shutters, and smart home products delivered
-                to Kathmandu, Pokhara, Biratnagar, and cities nationwide.
+                to Butwal, Pokhara, Biratnagar, and cities nationwide.
               </p>
               <p className="text-green-100 text-xs">{siteConfig.businessHours}</p>
             </div>

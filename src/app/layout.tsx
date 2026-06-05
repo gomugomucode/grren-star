@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     "Sliding Gate Motor",
     "Boom Barrier Nepal",
     "Rolling Shutter",
-    "Gate Automation Kathmandu",
+    "Gate Automation Butwal",
     "WhatsApp Order",
   ],
   authors: [{ name: siteConfig.name }],
