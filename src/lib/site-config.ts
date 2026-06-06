@@ -5,9 +5,9 @@ export const siteConfig = {
   description:
     "Greenstar Suppliers delivers entrance automation, gate motors, boom barriers, rolling shutters, and smart home products across Nepal. Call or WhatsApp to order.",
   phone: process.env.NEXT_PUBLIC_PHONE || "+9779801234567",
-  phoneDisplay: process.env.NEXT_PUBLIC_PHONE_DISPLAY || "+977 980-1234567",
+  phoneDisplay: process.env.NEXT_PUBLIC_PHONE_DISPLAY || "+977 985-7078139",
   /** Digits only, with country code — used for wa.me links */
-  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP || "9779801234567",
+  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP || "+977 985-7078139",
   email: process.env.NEXT_PUBLIC_EMAIL || "info@greenstarsuppliers.com.np",
   address: {
     city: "Butwal",
