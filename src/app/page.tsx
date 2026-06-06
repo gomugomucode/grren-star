@@ -19,7 +19,7 @@ export default function Home() {
         <SatisfactionBanner />
         <AboutSection />
         <Products />
-        <Reviews />
+        {/* <Reviews /> */}
         <Clients />
         <ContactForm />
       </main>
