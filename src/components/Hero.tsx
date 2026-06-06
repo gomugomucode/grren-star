@@ -13,6 +13,7 @@ const slides = [
     subtitle: `Quality sliding gate motors and kits — order across Nepal from ${siteConfig.name}`,
     gradient: "from-green-900 via-green-800 to-slate-900",
     accent: "bg-green-500/20 border-green-400/30",
+    image: "/slidinggate.jpg",
   },
   {
     id: 2,
@@ -20,6 +21,7 @@ const slides = [
     subtitle: "Make your gate smarter — call or WhatsApp Greenstar Suppliers for fast delivery in Nepal",
     gradient: "from-emerald-900 via-green-800 to-slate-900",
     accent: "bg-emerald-500/20 border-emerald-400/30",
+    image: "/Swing Gate.jpg",
   },
   {
     id: 3,
@@ -27,6 +29,7 @@ const slides = [
     subtitle: "Garage door motors and accessories supplied nationwide — easy ordering by phone or WhatsApp",
     gradient: "from-teal-900 via-green-800 to-slate-900",
     accent: "bg-teal-500/20 border-teal-400/30",
+    image: "/Garage Door.jpg",
   },
   {
     id: 4,
@@ -34,6 +37,7 @@ const slides = [
     subtitle: "Commercial boom barriers for parking and access control — available for order throughout Nepal",
     gradient: "from-green-950 via-green-900 to-slate-900",
     accent: "bg-lime-500/20 border-lime-400/30",
+    image: "/boom Barrier.jpg",
   },
 ];
 
@@ -58,17 +62,19 @@ export default function Hero() {
   return (
     <section className="relative h-[540px] md:h-[600px] overflow-hidden bg-slate-900">
       <AnimatePresence mode="wait">
-        <motion.div
-          key={slide.id}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+        <motion.img
+          key={`img-${slide.id}`}
+          src={slide.image}
+          alt={slide.title}
+          initial={{ opacity: 0, scale: 1.05 }}
+          animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.6 }}
-          className={`absolute inset-0 bg-gradient-to-br ${slide.gradient}`}
+          className="absolute inset-0 w-full h-full object-cover"
         />
       </AnimatePresence>
 
-      <div className="absolute inset-0 hero-overlay" />
+      <div className="absolute inset-0 bg-black/30" />
 
       <div
         className="absolute inset-0 opacity-10"
