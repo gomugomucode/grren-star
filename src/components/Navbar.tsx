@@ -133,7 +133,7 @@ export default function Navbar() {
                   className="flex items-center justify-center gap-2 w-full py-2.5 text-sm font-semibold text-green-800 border border-green-700 rounded-lg"
                 >
                   <Phone className="h-4 w-4" />
-                  Call to Order — {siteConfig.phoneDisplay}
+                  Call to Order
                 </a>
                 <a
                   href={getWhatsAppLink()}

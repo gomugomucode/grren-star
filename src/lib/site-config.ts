@@ -8,7 +8,7 @@ export const siteConfig = {
   phoneDisplay: process.env.NEXT_PUBLIC_PHONE_DISPLAY || "+977 985-7078139",
   /** Digits only, with country code — used for wa.me links */
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP || "+977 985-7078139",
-  email: process.env.NEXT_PUBLIC_EMAIL || "info@greenstarsuppliers.com.np",
+  email: process.env.NEXT_PUBLIC_EMAIL || "gstarsuppliers2072@gmail.com",
   address: {
     city: "Butwal",
     country: "Nepal",
