@@ -30,7 +30,7 @@ const productImages: Record<string, { title: string; description: string; featur
     featured: true,
   },
   "Automatic Glass Doors.jpg": {
-    title: "Automatic Glass Doors",
+    title: "Automatic Sliding Glass Door",
     description: "Diverse design options for interior and exterior needs in commercial and residential projects — ACP, structural glazing, façade spider glazing with toughened or laminated glasses.",
   },
   "Motorized Curtains.jpg": {
