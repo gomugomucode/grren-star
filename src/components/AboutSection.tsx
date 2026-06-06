@@ -37,7 +37,7 @@ export default function AboutSection() {
             </h2>
             <p className="text-slate-600 leading-relaxed mb-4">
               {siteConfig.name} is a trusted supplier of entrance automation and home
-              automation products in Nepal. We help homes, businesses, and factories integrate
+              automation systems in Nepal. We help homes, businesses, and factories integrate
               modern gate motors, barriers, shutters, and smart home systems with reliable
               products at competitive prices.
             </p>
