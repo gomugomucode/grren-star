@@ -4,10 +4,10 @@ export const siteConfig = {
   tagline: "Entrance & Home Automation Supplies",
   description:
     "Greenstar Suppliers delivers entrance automation, gate motors, boom barriers, rolling shutters, and smart home products across Nepal. Call or WhatsApp to order.",
-  phone: process.env.NEXT_PUBLIC_PHONE || "+9779801234567",
-  phoneDisplay: process.env.NEXT_PUBLIC_PHONE_DISPLAY || "+977 985-7078139",
+  phone: process.env.NEXT_PUBLIC_PHONE || "+9779840913391",
+  phoneDisplay: process.env.NEXT_PUBLIC_PHONE_DISPLAY || "+977 9840913391",
   /** Digits only, with country code — used for wa.me links */
-  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP || "+977 985-7078139",
+  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP || "+977 9840913391",
   email: process.env.NEXT_PUBLIC_EMAIL || "gstarsuppliers2072@gmail.com",
   address: {
     city: "Butwal",

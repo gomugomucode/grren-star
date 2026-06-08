@@ -25,3 +25,4 @@ CREATE TABLE "Lead" (
 
     CONSTRAINT "Lead_pkey" PRIMARY KEY ("id")
 );
+
