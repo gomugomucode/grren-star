@@ -14,7 +14,7 @@ export const siteConfig = {
     country: "Nepal",
     full: "Butwal",
   },
-  coverage: "All Nepal",
+  coverage: " Nepal",
   businessHours: "Sun–Fri: 9:00 AM – 6:00 PM NPT",
   whatsappOrderMessage:
     "Hello Greenstar Suppliers, I would like to place an order. Please share availability and price.",
