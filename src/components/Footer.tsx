@@ -93,7 +93,7 @@ export default function Footer() {
 
         <div className="pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
           <p>© {new Date().getFullYear()} {siteConfig.name}. All Rights Reserved.</p>
-          <p>Developed &amp; maintained by : Yasarbite {siteConfig.address.country}</p>
+          <p>Developed &amp; maintained by : Yasarbyte {siteConfig.address.country}</p>
         </div>
       </div>
     </footer>
