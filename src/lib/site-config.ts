@@ -12,7 +12,7 @@ export const siteConfig = {
   address: {
     city: "Butwal",
     country: "Nepal",
-    full: "Butwal, Nepal",
+    full: "Butwal",
   },
   coverage: "All Nepal",
   businessHours: "Sun–Fri: 9:00 AM – 6:00 PM NPT",
