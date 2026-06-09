@@ -14,20 +14,54 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: `${siteConfig.name} | Entrance & Home Automation Nepal`,
+  metadataBase: new URL(siteConfig.siteUrl),
+  title: {
+    default: "Entrance Automation & Home Automation Supplier in Nepal",
+    template: "%s | Greenstar Suppliers",
+  },
   description: siteConfig.description,
   keywords: [
     "Greenstar Suppliers",
     "Entrance Automation Nepal",
-    "Home Automation Nepal",
-    "Sliding Gate Motor",
+    "Gate Automation Nepal",
     "Boom Barrier Nepal",
-    "Rolling Shutter",
-    "Gate Automation Butwal",
+    "Sliding Gate Motor Nepal",
+    "Home Automation Nepal",
+    "Butwal Automation Supplier",
     "WhatsApp Order",
   ],
   authors: [{ name: siteConfig.name }],
-  icons: [{ url: "/favicon.ico", type: "image/x-icon" }],
+  publisher: siteConfig.name,
+  creator: siteConfig.name,
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
+  },
+  alternates: {
+    canonical: siteConfig.siteUrl,
+  },
+  openGraph: {
+    title: "Greenstar Suppliers | Entrance & Home Automation Nepal",
+    description: siteConfig.description,
+    type: "website",
+    url: new URL("/", siteConfig.siteUrl),
+    siteName: siteConfig.name,
+    images: [
+      { url: siteConfig.logo, width: 1200, height: 630, alt: `${siteConfig.name} logo and automation solutions` },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${siteConfig.name} | Entrance Automation Nepal`,
+    description: siteConfig.description,
+    images: [siteConfig.logo],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+  },
 };
 
 export default function RootLayout({

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Package, Phone, MessageCircle } from "lucide-react";
 import { getTelLink, getWhatsAppLink, siteConfig } from "@/lib/site-config";
@@ -96,10 +97,12 @@ export default function Products() {
               >
                 {product.image && (
                   <div className="relative w-full h-48 overflow-hidden bg-slate-200">
-                    <img
+                    <Image
                       src={product.image}
-                      alt={product.imageName}
-                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      alt={product.title}
+                      fill
+                      className="object-cover transition-transform duration-300 hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, 33vw"
                     />
                   </div>
                 )}

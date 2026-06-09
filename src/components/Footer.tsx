@@ -5,6 +5,9 @@ import { getTelLink, getWhatsAppLink, siteConfig } from "@/lib/site-config";
 
 export default function Footer() {
   const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (!href.startsWith("#")) {
+      return;
+    }
     e.preventDefault();
     document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
   };
@@ -52,6 +55,7 @@ export default function Footer() {
               {[
                 { name: "About", href: "#about" },
                 { name: "Products", href: "#products" },
+                { name: "Services", href: "/services" },
                 // { name: "Reviews", href: "#reviews" },
                 { name: "Contact", href: "#contact" },
               ].map((link) => (

@@ -18,11 +18,15 @@ export default function Navbar() {
   const navLinks = [
     { name: "About", href: "#about" },
     { name: "Products", href: "#products" },
+    { name: "Services", href: "/services" },
     // { name: "Reviews", href: "#reviews" },
     { name: "Contact", href: "#contact" },
   ];
 
   const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (!href.startsWith("#")) {
+      return;
+    }
     e.preventDefault();
     setIsOpen(false);
     document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });

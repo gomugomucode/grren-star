@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { AlertCircle, CheckCircle2, Loader2, Send, Phone, MapPin, Mail } from "lucide-react";
 import OrderButtons from "@/components/OrderButtons";
+import MapSection from "@/components/MapSection";
 import { getTelLink, siteConfig } from "@/lib/site-config";
 
 interface ContactFormInputs {
@@ -111,6 +112,7 @@ export default function ContactForm() {
               </p>
               <p className="text-green-100 text-xs">{siteConfig.businessHours}</p>
             </div>
+            <MapSection />
           </div>
 
           <div className="lg:col-span-3">

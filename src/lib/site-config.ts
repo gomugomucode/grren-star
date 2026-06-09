@@ -7,14 +7,16 @@ export const siteConfig = {
   phone: process.env.NEXT_PUBLIC_PHONE || "+9779840913391",
   phoneDisplay: process.env.NEXT_PUBLIC_PHONE_DISPLAY || "+977 9840913391",
   /** Digits only, with country code — used for wa.me links */
-  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP || "+977 9840913391",
+  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP?.replace(/\D/g, "") || "9779840913391",
   email: process.env.NEXT_PUBLIC_EMAIL || "gstarsuppliers2072@gmail.com",
+  siteUrl: "https://geenstarsuppliers.com.np",
+  logo: "/top_icon.jpeg",
   address: {
     city: "Butwal",
     country: "Nepal",
-    full: "Butwal",
+    full: "Butwal, Nepal",
   },
-  coverage: " Nepal",
+  coverage: "Nepal",
   businessHours: "Sun–Fri: 9:00 AM – 6:00 PM NPT",
   whatsappOrderMessage:
     "Hello Greenstar Suppliers, I would like to place an order. Please share availability and price.",
