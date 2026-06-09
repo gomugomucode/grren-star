@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Navbar from "@/components/Navbar";
 import { servicePages } from "@/components/ServiceHighlights";
 import OrderButtons from "@/components/OrderButtons";
 import FaqSection from "@/components/FaqSection";
@@ -113,6 +114,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
   return (
     <div className="bg-background text-foreground overflow-x-hidden font-sans">
+      <Navbar />
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <nav className="mb-6 text-sm text-slate-500">
           <Link href="/" className="hover:text-green-700">

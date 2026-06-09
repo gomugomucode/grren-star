@@ -16,20 +16,30 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "About", href: "#about" },
-    { name: "Products", href: "#products" },
+    { name: "About", href: "/#about" },
+    { name: "Products", href: "/#products" },
     { name: "Services", href: "/services" },
     // { name: "Reviews", href: "#reviews" },
-    { name: "Contact", href: "#contact" },
+    { name: "Contact", href: "/#contact" },
   ];
 
   const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (!href.startsWith("#")) {
+    const isHashOnly = href.startsWith("#");
+    const isRootHash = href.startsWith("/") && href.includes("#");
+
+    if (!isHashOnly && !isRootHash) {
       return;
     }
+
+    if (isRootHash && window.location.pathname !== "/") {
+      return;
+    }
+
     e.preventDefault();
     setIsOpen(false);
-    document.querySelector(href)?.scrollIntoView({ behavior: "smooth" });
+
+    const hash = isHashOnly ? href : `#${href.split("#")[1]}`;
+    document.querySelector(hash)?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Navbar from "@/components/Navbar";
 import ServiceHighlights from "@/components/ServiceHighlights";
 import FaqSection from "@/components/FaqSection";
 import { siteConfig } from "@/lib/site-config";
@@ -31,6 +32,7 @@ export const metadata: Metadata = {
 export default function ServicesPage() {
   return (
     <div className="bg-background text-foreground overflow-x-hidden font-sans">
+      <Navbar />
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="text-center max-w-3xl mx-auto mb-12">
           <p className="section-label mb-3 mx-auto w-fit">Services</p>
