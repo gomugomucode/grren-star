@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Leaf, Menu, X, Phone, Mail, MessageCircle } from "lucide-react";
+import Image from "next/image";
+import { Menu, X, Phone, Mail, MessageCircle } from "lucide-react";
 import { getTelLink, getWhatsAppLink, siteConfig } from "@/lib/site-config";
 
 export default function Navbar() {
@@ -56,11 +57,17 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div
-              className="flex items-center gap-2.5 cursor-pointer"
+              className="flex items-center gap-3 cursor-pointer"
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             >
-              <div className="p-1.5 bg-green-700 rounded">
-                <Leaf className="h-5 w-5 text-white" />
+              <div className="flex items-center justify-center rounded-full overflow-hidden bg-green-700">
+                <Image
+                  src="/nav_logo.png"
+                  alt={`${siteConfig.shortName} logo`}
+                  width={40}
+                  height={40}
+                  className="h-10 w-10 object-contain"
+                />
               </div>
               <div className="leading-tight">
                 <span className="block text-base font-bold text-slate-900 tracking-tight">
