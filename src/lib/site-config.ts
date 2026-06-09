@@ -10,9 +10,10 @@ export const siteConfig = {
   whatsapp: process.env.NEXT_PUBLIC_WHATSAPP?.replace(/\D/g, "") || "9779840913391",
   email: process.env.NEXT_PUBLIC_EMAIL || "gstarsuppliers2072@gmail.com",
   siteUrl: "https://geenstarsuppliers.com.np",
-  logo: "/top_icon.jpeg",
+  logo: "/top_logo.jpeg",
   address: {
     city: "Butwal",
+    region: "Lumbini Province",
     country: "Nepal",
     full: "Butwal, Nepal",
   },
