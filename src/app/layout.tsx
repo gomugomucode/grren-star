@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     "WhatsApp Order",
   ],
   authors: [{ name: siteConfig.name }],
-  icons: [{ url: "/top_logo.jpeg", type: "image/jpeg" }],
+  icons: [{ url: "/favicon.ico", type: "image/x-icon" }],
 };
 
 export default function RootLayout({

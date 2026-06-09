@@ -60,7 +60,7 @@ export default function Navbar() {
               className="flex items-center gap-3 cursor-pointer"
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             >
-              <div className="flex items-center justify-center rounded-full overflow-hidden bg-green-700">
+              <div className="flex items-center justify-center rounded-full overflow-hidden bg-white">
                 <Image
                   src="/nav_logo.png"
                   alt={`${siteConfig.shortName} logo`}
