@@ -118,10 +118,10 @@ export default function Home() {
       <main className="flex-grow">
         <Hero />
         <SatisfactionBanner />
+        <Products />
         <AboutSection />
         <ServiceHighlights />
         <FaqSection faqs={homepageFaqs} />
-        <Products />
         {/* <Reviews /> */}
         <Clients />
         <ContactForm />
