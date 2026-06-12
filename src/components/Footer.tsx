@@ -103,8 +103,10 @@ export default function Footer() {
 
         <div className="pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
           <p>© {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</p>
+          <p>Designed and developed by <a href="https://yarsabyte.vercel.app" target="_blank" rel="noopener noreferrer" className="hover:text-green-400 transition-colors">YarsaByte.</a></p>
           <p>{siteConfig.address.country}</p>
         </div>
+      
       </div>
     </footer>
   );
