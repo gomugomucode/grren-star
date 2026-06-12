@@ -1,145 +1,48 @@
-"use client";
-
-import { useState, useEffect, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import Image from "next/image";
+import { Check } from "lucide-react";
 import OrderButtons from "@/components/OrderButtons";
-import { siteConfig } from "@/lib/site-config";
-
-const slides = [
-  {
-    id: 1,
-    title: "Sliding Gate Automations",
-    subtitle: `Quality sliding gate motors and kits — order across Nepal from ${siteConfig.name}`,
-    gradient: "from-green-900 via-green-800 to-slate-900",
-    accent: "bg-green-500/20 border-green-400/30",
-    image: "/slidinggate.jpg",
-  },
-  {
-    id: 2,
-    title: "Swing Gate Automations",
-    subtitle: "Make your gate smarter — call or WhatsApp Greenstar Suppliers for fast delivery in Nepal",
-    gradient: "from-emerald-900 via-green-800 to-slate-900",
-    accent: "bg-emerald-500/20 border-emerald-400/30",
-    image: "/Swing Gate.jpg",
-  },
-  {
-    id: 3,
-    title: "Garage Door Automations",
-    subtitle: "Garage door motors and accessories supplied nationwide — easy ordering by phone or WhatsApp",
-    gradient: "from-teal-900 via-green-800 to-slate-900",
-    accent: "bg-teal-500/20 border-teal-400/30",
-    image: "/Garage Door.jpg",
-  },
-  {
-    id: 4,
-    title: "Boom Barrier",
-    subtitle: "Commercial boom barriers for parking and access control — available for order throughout Nepal",
-    gradient: "from-green-950 via-green-900 to-slate-900",
-    accent: "bg-lime-500/20 border-lime-400/30",
-    image: "/boom Barrier.jpg",
-  },
-];
 
 export default function Hero() {
-  const [current, setCurrent] = useState(0);
-
-  const next = useCallback(() => {
-    setCurrent((prev) => (prev + 1) % slides.length);
-  }, []);
-
-  const prev = useCallback(() => {
-    setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
-  }, []);
-
-  useEffect(() => {
-    const timer = setInterval(next, 6000);
-    return () => clearInterval(timer);
-  }, [next]);
-
-  const slide = slides[current];
-
   return (
-    <section className="relative h-[540px] md:h-[600px] overflow-hidden bg-slate-900">
-      <AnimatePresence mode="wait">
-        <motion.img
-          key={`img-${slide.id}`}
-          src={slide.image}
-          alt={slide.title}
-          initial={{ opacity: 0, scale: 1.05 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.6 }}
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-      </AnimatePresence>
-
-      <div className="absolute inset-0 bg-black/30" />
-
-      <div
-        className="absolute inset-0 opacity-10"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle at 20% 50%, white 1px, transparent 1px), radial-gradient(circle at 80% 20%, white 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
-        }}
-      />
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col justify-center">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={slide.id}
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -24 }}
-            transition={{ duration: 0.5 }}
-            className="max-w-2xl"
-          >
-            <div
-              className={`inline-flex items-center gap-2 border text-green-100 text-xs font-semibold uppercase tracking-widest px-3 py-1.5 rounded mb-6 ${slide.accent}`}
-            >
-              Nepal-wide supply · Call or WhatsApp to order
-            </div>
-
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-white leading-tight mb-5">
-              {slide.title}
-            </h1>
-
-            <p className="text-lg text-green-100/90 leading-relaxed mb-8 max-w-xl">
-              {slide.subtitle}
+    <section className="bg-[#f4f7f4]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 lg:py-20">
+        <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-10 lg:gap-16 items-center">
+          <div>
+            <p className="text-sm font-semibold text-green-700 mb-4">
+              Entrance and home automation in Nepal
             </p>
-
-            <OrderButtons size="lg" />
-          </motion.div>
-        </AnimatePresence>
-
-        <div className="absolute bottom-8 left-4 sm:left-6 lg:left-8 flex items-center gap-3">
-          <button
-            onClick={prev}
-            aria-label="Previous slide"
-            className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/20 transition-colors"
-          >
-            <ChevronLeft className="h-5 w-5" />
-          </button>
-          <div className="flex gap-2">
-            {slides.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setCurrent(i)}
-                aria-label={`Go to slide ${i + 1}`}
-                className={`h-2 rounded-full transition-all ${
-                  i === current ? "w-8 bg-white" : "w-2 bg-white/40 hover:bg-white/60"
-                }`}
-              />
-            ))}
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-[-0.04em] text-slate-950 leading-[1.05]">
+              Reliable automation for safer, easier access.
+            </h1>
+            <p className="mt-6 text-base sm:text-lg text-slate-600 leading-relaxed max-w-xl">
+              Gate motors, boom barriers, rolling shutters, garage doors, and smart home systems with local support.
+            </p>
+            <div className="mt-7 flex flex-wrap gap-x-6 gap-y-3 text-sm text-slate-600">
+              {["Nationwide supply", "Product guidance", "Installation support"].map((item) => (
+                <span key={item} className="flex items-center gap-2">
+                  <Check className="h-4 w-4 text-green-700" />
+                  {item}
+                </span>
+              ))}
+            </div>
+            <OrderButtons size="lg" className="mt-8" />
           </div>
-          <button
-            onClick={next}
-            aria-label="Next slide"
-            className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/20 transition-colors"
-          >
-            <ChevronRight className="h-5 w-5" />
-          </button>
+
+          <div className="relative h-[330px] sm:h-[430px] lg:h-[500px] overflow-hidden rounded-2xl bg-slate-200">
+            <Image
+              src="/slidinggate.jpg"
+              alt="Automatic sliding gate system"
+              fill
+              priority
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 55vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/35 via-transparent to-transparent" />
+            <div className="absolute bottom-5 left-5 right-5 bg-white/95 backdrop-blur-sm rounded-xl p-4 sm:p-5">
+              <p className="font-semibold text-slate-900">Automatic sliding gate systems</p>
+              <p className="text-sm text-slate-500 mt-1">For homes, businesses, and industrial entrances.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

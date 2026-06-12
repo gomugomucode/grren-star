@@ -66,14 +66,15 @@ export default function ContactForm() {
   };
 
   return (
-    <section id="contact" className="py-20 bg-white border-t border-slate-200">
+    <section id="contact" className="py-16 lg:py-20 bg-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <div className="section-label mb-3 mx-auto w-fit">Order &amp; Enquiry</div>
-          <h2 className="text-3xl font-bold text-slate-900">Get in Touch With Us</h2>
-          <p className="text-slate-500 mt-3 text-sm">
-            For the fastest response, call or WhatsApp to order. You can also submit the form
-            below and we will reply with pricing and delivery details for your location in Nepal.
+        <div className="text-center max-w-xl mx-auto mb-10">
+          <p className="text-sm font-semibold text-green-700 mb-3">Contact</p>
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-950">
+            Tell us what you need.
+          </h2>
+          <p className="text-slate-500 mt-3">
+            Call, WhatsApp, or send a short enquiry for pricing and availability.
           </p>
           <div className="mt-6 flex justify-center">
             <OrderButtons />
@@ -116,7 +117,7 @@ export default function ContactForm() {
           </div>
 
           <div className="lg:col-span-3">
-            <div className="bg-slate-50 border border-slate-200 rounded-xl p-8">
+            <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 sm:p-8">
               {submitSuccess ? (
                 <div className="text-center py-8 space-y-4">
                   <div className="inline-flex p-3 rounded-full bg-green-100 border border-green-200 text-green-600">

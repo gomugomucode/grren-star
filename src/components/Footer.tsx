@@ -27,7 +27,7 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-sm text-slate-400 leading-relaxed max-w-md">
-              {siteConfig.description}
+              Entrance and home automation products with support from Butwal and delivery across Nepal.
             </p>
             <div className="flex flex-wrap gap-3 pt-2">
               <a
@@ -96,8 +96,8 @@ export default function Footer() {
         </div>
 
         <div className="pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
-          <p>© {new Date().getFullYear()} {siteConfig.name}. All Rights Reserved.</p>
-          <p>Developed &amp; maintained by : Yasarbyte {siteConfig.address.country}</p>
+          <p>© {new Date().getFullYear()} {siteConfig.name}. All rights reserved.</p>
+          <p>{siteConfig.address.country}</p>
         </div>
       </div>
     </footer>

@@ -4,13 +4,9 @@ import Hero from "@/components/Hero";
 import SatisfactionBanner from "@/components/SatisfactionBanner";
 import AboutSection from "@/components/AboutSection";
 import Products from "@/components/Products";
-import Reviews from "@/components/Reviews";
-import Clients from "@/components/Clients";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
-import ServiceHighlights from "@/components/ServiceHighlights";
-import FaqSection from "@/components/FaqSection";
 import { siteConfig } from "@/lib/site-config";
 
 const homepageFaqs = [
@@ -120,10 +116,6 @@ export default function Home() {
         <SatisfactionBanner />
         <Products />
         <AboutSection />
-        <ServiceHighlights />
-        <FaqSection faqs={homepageFaqs} />
-        {/* <Reviews /> */}
-        <Clients />
         <ContactForm />
       </main>
 

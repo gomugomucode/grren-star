@@ -51,7 +51,7 @@ export default function Navbar() {
               <Phone className="h-3 w-3" />
               {siteConfig.phoneDisplay}
             </a>
-            <span>{siteConfig.address.full} · {siteConfig.coverage}</span>
+            <span>{siteConfig.address.full} · Delivery across {siteConfig.coverage}</span>
           </div>
           <a
             href={`mailto:${siteConfig.email}`}
@@ -93,7 +93,7 @@ export default function Navbar() {
               </div>
             </div>
 
-            <div className="hidden lg:flex items-center gap-8">
+            <div className="hidden md:flex items-center gap-8">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
@@ -106,7 +106,7 @@ export default function Navbar() {
               ))}
             </div>
 
-            <div className="hidden md:flex items-center gap-2">
+            <div className="hidden lg:flex items-center gap-2">
               <a
                 href={getTelLink()}
                 className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-green-800 border border-green-700 rounded-lg hover:bg-green-50 transition-colors"
