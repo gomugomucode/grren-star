@@ -68,7 +68,7 @@ export default function ContactForm() {
     <section id="contact" className="py-16 lg:py-20 bg-white">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-xl mx-auto mb-10">
-          <p className="text-sm font-semibold text-green-700 mb-3">Contact</p>
+          {/* <p className="text-sm font-semibold text-green-700 mb-3">Contact</p> */}
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-950">
             Tell us what you need.
           </h2>
