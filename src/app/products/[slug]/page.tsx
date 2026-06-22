@@ -164,7 +164,12 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
           </div>
         </section>
 
-        <section className="py-14 lg:py-18">
+        {/* <section className="py-14 lg:py-18">
+          <div className="text-center">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-green-700 pb-6">
+              About the product and why to use it 
+            </p>
+          </div>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
               {[
@@ -197,7 +202,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
               })}
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* <section className="bg-slate-950 py-14 text-white lg:py-16">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -296,12 +301,12 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
           </div>
         </section> */}
 
-        <section className="bg-green-800 py-14 text-white lg:py-16">
+        <section className="bg-slate-50 py-14 lg:py-16">
           <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 sm:px-6 lg:grid-cols-[1fr_0.85fr] lg:items-center lg:px-8">
             <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-green-200">Contact us</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-green-700">Contact us</p>
               <h2 className="mt-3 text-3xl font-bold tracking-tight">Want price, delivery, or installation details?</h2>
-              <p className="mt-4 text-sm leading-7 text-green-100">
+              <p className="mt-4 text-sm leading-7 text-slate-600">
                 Send the product name, your city, and a photo or short video of the site. We will help you choose the
                 correct option and share availability for {product.title}.
               </p>
