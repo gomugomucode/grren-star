@@ -199,7 +199,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
           </div>
         </section>
 
-        <section className="bg-slate-950 py-14 text-white lg:py-16">
+        {/* <section className="bg-slate-950 py-14 text-white lg:py-16">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="max-w-2xl">
               <p className="text-sm font-semibold uppercase tracking-[0.18em] text-green-300">
@@ -224,7 +224,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
               ))}
             </div>
           </div>
-        </section>
+        </section> */}
 
         <section className="py-14 lg:py-16">
           <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
@@ -278,7 +278,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
           </div>
         </section>
 
-        <section className="py-14 lg:py-16">
+        {/* <section className="py-14 lg:py-16">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="mb-8 flex items-center gap-3">
               <HelpCircle className="h-6 w-6 text-green-700" />
@@ -294,7 +294,7 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
               ))}
             </div>
           </div>
-        </section>
+        </section> */}
 
         <section className="bg-green-800 py-14 text-white lg:py-16">
           <div className="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-4 sm:px-6 lg:grid-cols-[1fr_0.85fr] lg:items-center lg:px-8">
