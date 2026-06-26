@@ -1,6 +1,7 @@
 "use client";
 
 import { Leaf, Mail, Phone, MapPin, MessageCircle } from "lucide-react";
+import Link from "next/link";
 import MapSection from "@/components/MapSection";
 import { getTelLink, getWhatsAppLink, siteConfig } from "@/lib/site-config";
 
@@ -56,19 +57,18 @@ export default function Footer() {
                 <h4 className="text-xs font-bold text-white uppercase tracking-widest mb-4">Quick Links</h4>
                 <ul className="space-y-2 text-sm">
                   {[
-                    { name: "About", href: "#about" },
-                    { name: "Products", href: "#products" },
+                    { name: "About", href: "/about" },
+                    { name: "Products", href: "/products" },
                     { name: "Services", href: "/services" },
-                    { name: "Contact", href: "#contact" },
+                    { name: "Contact", href: "/contact" },
                   ].map((link) => (
                     <li key={link.name}>
-                      <a
+                      <Link
                         href={link.href}
-                        onClick={(e) => handleScrollTo(e, link.href)}
                         className="text-slate-400 hover:text-green-400 transition-colors"
                       >
                         {link.name}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>

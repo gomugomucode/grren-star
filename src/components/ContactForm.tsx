@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { AlertCircle, CheckCircle2, Loader2, Send } from "lucide-react";
+import { AlertCircle, CheckCircle2, ChevronDown, Loader2, Send } from "lucide-react";
 import { motion } from "framer-motion";
 import OrderButtons from "@/components/OrderButtons";
 import { getTelLink, siteConfig } from "@/lib/site-config";
@@ -104,19 +104,19 @@ export default function ContactForm() {
             <div>
               <h3 className="text-2xl font-bold text-slate-900 mb-8 font-sans">Reach Us Directly</h3>
               <ul className="space-y-8 text-slate-600">
-                <li className="group border-l border-slate-200 pl-6 hover:border-green-600 transition-colors duration-500 cursor-none">
+                <li className="group border-l border-slate-200 pl-6 hover:border-green-600 transition-colors duration-500">
                   <span className="text-[10px] font-bold tracking-[0.2em] text-green-700 uppercase mb-2 block">Location</span>
                   <strong className="block text-slate-900 font-medium mb-1">Headquarters</strong>
                   <span className="font-light leading-relaxed text-sm block">{siteConfig.address.full}</span>
                 </li>
-                <li className="group border-l border-slate-200 pl-6 hover:border-green-600 transition-colors duration-500 cursor-none">
+                <li className="group border-l border-slate-200 pl-6 hover:border-green-600 transition-colors duration-500">
                   <span className="text-[10px] font-bold tracking-[0.2em] text-green-700 uppercase mb-2 block">Direct Line</span>
                   <strong className="block text-slate-900 font-medium mb-1">Phone & WhatsApp</strong>
                   <a href={getTelLink()} className="interactive font-light hover:text-green-700 transition-colors text-sm">
                     {siteConfig.phoneDisplay}
                   </a>
                 </li>
-                <li className="group border-l border-slate-200 pl-6 hover:border-green-600 transition-colors duration-500 cursor-none">
+                <li className="group border-l border-slate-200 pl-6 hover:border-green-600 transition-colors duration-500">
                   <span className="text-[10px] font-bold tracking-[0.2em] text-green-700 uppercase mb-2 block">Digital</span>
                   <strong className="block text-slate-900 font-medium mb-1">Email Support</strong>
                   <a href={`mailto:${siteConfig.email}`} className="interactive font-light hover:text-green-700 transition-colors text-sm">
@@ -184,10 +184,11 @@ export default function ContactForm() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">
+                    <label htmlFor="contact-name" className="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">
                       Your Name <span className="text-red-400">*</span>
                     </label>
                     <input
+                      id="contact-name"
                       type="text"
                       placeholder="John Doe"
                       {...register("name", { required: "Name is required", minLength: { value: 2, message: "Min 2 characters" } })}
@@ -198,10 +199,11 @@ export default function ContactForm() {
                     )}
                   </div>
                   <div>
-                    <label className="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">
+                    <label htmlFor="contact-email" className="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">
                       Email <span className="text-red-400">*</span>
                     </label>
                     <input
+                      id="contact-email"
                       type="email"
                       placeholder="john@example.com"
                       {...register("email", {
@@ -218,10 +220,11 @@ export default function ContactForm() {
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">
+                    <label htmlFor="contact-phone" className="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">
                       Phone <span className="text-red-400">*</span>
                     </label>
                     <input
+                      id="contact-phone"
                       type="tel"
                       placeholder="+977 98XXXXXXXX"
                       {...register("phone", { required: "Phone is required", minLength: { value: 7, message: "Min 7 digits" } })}
@@ -232,18 +235,22 @@ export default function ContactForm() {
                     )}
                   </div>
                   <div>
-                    <label className="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">
+                    <label htmlFor="contact-product" className="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">
                       Product / Service <span className="text-red-400">*</span>
                     </label>
+                    <div className="relative">
                     <select
+                      id="contact-product"
                       {...register("businessType", { required: "Please select a product" })}
-                      className="interactive w-full border-b-2 border-slate-200 px-0 py-3 text-slate-800 focus:outline-none focus:border-green-600 bg-transparent transition-colors font-light appearance-none"
+                      className="interactive w-full border-b-2 border-slate-200 px-0 py-3 text-slate-800 focus:outline-none focus:border-green-600 bg-transparent transition-colors font-light appearance-none pr-8"
                     >
                       <option value="" disabled className="text-slate-300">Select product...</option>
                       {productOptions.map((opt) => (
                         <option key={opt} value={opt} className="text-slate-800">{opt}</option>
                       ))}
                     </select>
+                    <ChevronDown className="absolute right-0 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400 pointer-events-none" />
+                    </div>
                     {errors.businessType && (
                       <p className="text-xs text-red-500 mt-2">{errors.businessType.message}</p>
                     )}
@@ -251,10 +258,11 @@ export default function ContactForm() {
                 </div>
 
                 <div className="pt-2">
-                  <label className="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">
-                    Requirements &amp; Location <span className="text-red-400">*</span>
+                  <label htmlFor="contact-message" className="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">
+                    Requirements & Location <span className="text-red-400">*</span>
                   </label>
                   <textarea
+                    id="contact-message"
                     rows={3}
                     placeholder="E.g., I need a sliding gate motor for my home in Pokhara..."
                     {...register("message", { required: "Please describe your requirement", minLength: { value: 5, message: "Min 5 characters" } })}

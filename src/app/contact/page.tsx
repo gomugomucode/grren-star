@@ -12,10 +12,10 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <div className="flex flex-col min-h-screen bg-background text-foreground overflow-x-hidden font-sans">
+    <div className="flex flex-col min-h-screen bg-white text-slate-900 overflow-x-hidden font-sans">
       <Navbar />
 
-      <main className="flex-grow pt-16">
+      <main className="flex-grow pt-24 sm:pt-28">
         <ContactForm />
       </main>
 

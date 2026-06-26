@@ -53,7 +53,7 @@ export default function AboutSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.3 + (index * 0.1) }}
-                  className="flex gap-4 items-center group cursor-none"
+                  className="flex gap-4 items-center group"
                 >
                   <div className="w-4 h-px bg-slate-300 group-hover:bg-green-600 group-hover:w-6 transition-all duration-300 shrink-0" />
                   <span className="text-slate-600 font-light group-hover:text-slate-900 group-hover:translate-x-1 transition-all duration-300">{item}</span>

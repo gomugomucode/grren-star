@@ -61,7 +61,7 @@ export default function Hero() {
     }, 6000);
 
     return () => window.clearInterval(timer);
-  }, []);
+  }, [current]);
 
   const showPrevious = () => setCurrent((index) => (index - 1 + facilities.length) % facilities.length);
   const showNext = () => setCurrent((index) => (index + 1) % facilities.length);
@@ -84,12 +84,12 @@ export default function Hero() {
               </p>
             </motion.div>
             
-            <motion.h1 variants={itemVariants} className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-slate-900 leading-[1.05] mb-6">
+            <motion.h1 variants={itemVariants} className="text-3xl sm:text-5xl lg:text-7xl font-bold tracking-tight text-slate-900 leading-[1.05] mb-6">
               Access <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-700 to-green-500">Perfected.</span>
             </motion.h1>
             
-            <motion.p variants={itemVariants} className="text-lg sm:text-xl text-slate-500 leading-relaxed max-w-xl mb-10 font-light">
+            <motion.p variants={itemVariants} className="text-base sm:text-lg lg:text-xl text-slate-500 leading-relaxed max-w-xl mb-8 sm:mb-10 font-light">
               Elevate your spaces with state-of-the-art gate motors, boom barriers, and smart home systems. Local expertise, world-class precision.
             </motion.p>
             
@@ -111,7 +111,7 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, ease: "easeOut", delay: 0.4 }}
-            className="relative h-[450px] sm:h-[550px] lg:h-[650px] w-full rounded-[2rem] overflow-hidden shadow-2xl"
+            className="relative h-[320px] sm:h-[450px] lg:h-[650px] w-full rounded-2xl sm:rounded-[2rem] overflow-hidden shadow-2xl"
           >
             <AnimatePresence mode="wait">
               <motion.div
@@ -159,7 +159,7 @@ export default function Hero() {
                     <h3 className="text-xl font-medium text-white mb-2">{facilities[current].title}</h3>
                     <p className="text-sm text-slate-300 font-light">{facilities[current].description}</p>
                   </div>
-                  <div className="hidden sm:flex gap-2 pb-2">
+                  <div className="flex gap-2 pb-2">
                     {facilities.map((_, index) => (
                       <button
                         key={index}

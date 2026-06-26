@@ -40,8 +40,8 @@ export default function Products({ limit }: { limit?: number }) {
   };
 
   const itemVariant: Variants = {
-    hidden: { opacity: 0, y: 60, rotate: 2 },
-    show: { opacity: 1, y: 0, rotate: 0, transition: { duration: 0.8, ease: "easeOut" } }
+    hidden: { opacity: 0, y: 60 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
   };
 
   const displayedProducts = limit ? products.slice(0, limit) : products;
@@ -81,9 +81,9 @@ export default function Products({ limit }: { limit?: number }) {
             <motion.article 
               variants={itemVariant}
               key={product.title} 
-              className="group flex flex-col industrial-card overflow-hidden cursor-none"
+              className="group flex flex-col industrial-card overflow-hidden"
             >
-              <div className="relative w-full h-64 overflow-hidden bg-slate-50">
+              <div className="relative w-full h-48 sm:h-56 lg:h-64 overflow-hidden bg-slate-50">
                 <div className="absolute top-[-40px] left-0 w-full h-[calc(100%+80px)] parallax-wrapper">
                   <Image
                     src={product.image}
@@ -95,7 +95,7 @@ export default function Products({ limit }: { limit?: number }) {
                   <div className="absolute inset-0 bg-slate-900/10 group-hover:bg-transparent transition-colors duration-[1.2s]" />
                 </div>
               </div>
-              <div className="p-8 flex flex-1 flex-col">
+              <div className="p-5 sm:p-8 flex flex-1 flex-col">
                 <div className="flex-1">
                   <h3 className="text-xl font-bold text-slate-900 mb-3">{product.title}</h3>
                   <p className="text-slate-500 leading-relaxed font-light">{product.description}</p>

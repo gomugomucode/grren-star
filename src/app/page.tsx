@@ -108,7 +108,7 @@ const homepageJsonLd = [
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen bg-background text-foreground overflow-x-hidden font-sans">
+    <div className="flex flex-col min-h-screen bg-white text-slate-900 overflow-x-hidden font-sans">
       <Navbar />
 
       <main className="flex-grow">
