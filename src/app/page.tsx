@@ -4,7 +4,7 @@ import Hero from "@/components/Hero";
 import SatisfactionBanner from "@/components/SatisfactionBanner";
 import AboutSection from "@/components/AboutSection";
 import Products from "@/components/Products";
-import ContactForm from "@/components/ContactForm";
+import ContactCTA from "@/components/ContactCTA";
 import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import { siteConfig } from "@/lib/site-config";
@@ -114,9 +114,9 @@ export default function Home() {
       <main className="flex-grow">
         <Hero />
         <SatisfactionBanner />
-        <Products />
+        <Products limit={3} />
         <AboutSection />
-        <ContactForm />
+        <ContactCTA />
       </main>
 
       <Footer />

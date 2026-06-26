@@ -2,25 +2,40 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Menu, X, Phone, Mail, MessageCircle } from "lucide-react";
 import { getTelLink, getWhatsAppLink, siteConfig } from "@/lib/site-config";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 10);
-    window.addEventListener("scroll", handleScroll);
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      setScrolled(currentScrollY > 10);
+      
+      // Hide if scrolling down past 100px, show if scrolling up
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsHidden(true);
+      } else {
+        setIsHidden(false);
+      }
+      
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [lastScrollY]);
 
   const navLinks = [
-    { name: "About", href: "/#about" },
-    { name: "Products", href: "/#products" },
+    { name: "About", href: "/about" },
+    { name: "Products", href: "/products" },
     { name: "Services", href: "/services" },
-    // { name: "Reviews", href: "#reviews" },
-    { name: "Contact", href: "/#contact" },
+    { name: "Contact", href: "/contact" },
   ];
 
   const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -64,15 +79,15 @@ export default function Navbar() {
       </div>
 
       <nav
-        className={`sticky top-0 z-50 bg-white transition-shadow duration-200 ${
+        className={`sticky top-0 z-50 bg-white border-b border-slate-200 transition-all duration-300 ${
           scrolled ? "shadow-md" : "shadow-sm"
-        } border-b border-slate-200`}
+        } ${isHidden ? "-translate-y-full opacity-0" : "translate-y-0 opacity-100"}`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <div
-              className="flex items-center gap-3 cursor-pointer"
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            <Link
+              href="/"
+              className="flex items-center gap-3 interactive group"
             >
               <div className="flex items-center justify-center rounded-full overflow-hidden bg-white">
                 <Image
@@ -80,18 +95,18 @@ export default function Navbar() {
                   alt={`${siteConfig.shortName} logo`}
                   width={40}
                   height={40}
-                  className="h-10 w-10 object-contain"
+                  className="h-10 w-10 object-contain group-hover:scale-110 transition-transform duration-300"
                 />
               </div>
               <div className="leading-tight">
-                <span className="block text-base font-bold text-slate-900 tracking-tight">
+                <span className="block text-base font-bold text-slate-900 tracking-tight group-hover:text-green-700 transition-colors">
                   {siteConfig.shortName}
                 </span>
                 <span className="block text-[10px] text-green-700 font-semibold uppercase tracking-widest">
                   Suppliers
                 </span>
               </div>
-            </div>
+            </Link>
 
             <div className="hidden md:flex items-center gap-8">
               {navLinks.map((link) => (
@@ -99,7 +114,7 @@ export default function Navbar() {
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleScrollTo(e, link.href)}
-                  className="text-base font-semibold text-slate-600 hover:text-green-700 transition-colors"
+                  className="text-xl font-semibold text-slate-600 hover:text-green-700 transition-colors"
                 >
                   {link.name}
                 </a>
@@ -143,7 +158,7 @@ export default function Navbar() {
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleScrollTo(e, link.href)}
-                  className="block text-base font-semibold text-slate-700 hover:text-green-700 py-2"
+                  className="block text-xl font-semibold text-slate-700 hover:text-green-700 py-2"
                 >
                   {link.name}
                 </a>

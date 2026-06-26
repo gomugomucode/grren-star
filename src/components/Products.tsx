@@ -12,7 +12,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Products() {
+export default function Products({ limit }: { limit?: number }) {
   const sectionRef = useRef<HTMLElement>(null);
 
   useGSAP(() => {
@@ -43,6 +43,8 @@ export default function Products() {
     hidden: { opacity: 0, y: 60, rotate: 2 },
     show: { opacity: 1, y: 0, rotate: 0, transition: { duration: 0.8, ease: "easeOut" } }
   };
+
+  const displayedProducts = limit ? products.slice(0, limit) : products;
 
   return (
     <section ref={sectionRef} id="products" className="py-24 lg:py-32 bg-white relative">
@@ -75,11 +77,11 @@ export default function Products() {
           viewport={{ once: true, margin: "-50px" }}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
         >
-          {products.map((product) => (
+          {displayedProducts.map((product) => (
             <motion.article 
               variants={itemVariant}
               key={product.title} 
-              className="group flex flex-col industrial-card overflow-hidden"
+              className="group flex flex-col industrial-card overflow-hidden cursor-none"
             >
               <div className="relative w-full h-64 overflow-hidden bg-slate-50">
                 <div className="absolute top-[-40px] left-0 w-full h-[calc(100%+80px)] parallax-wrapper">
@@ -109,6 +111,18 @@ export default function Products() {
             </motion.article>
           ))}
         </motion.div>
+        
+        {limit && products.length > limit && (
+          <div className="mt-16 flex justify-center">
+            <Link 
+              href="/products" 
+              className="interactive inline-flex items-center gap-3 py-4 px-8 bg-slate-900 hover:bg-green-700 text-white font-semibold text-sm rounded-xl transition-all duration-300 shadow-lg hover:shadow-green-700/20"
+            >
+              View All Products
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );

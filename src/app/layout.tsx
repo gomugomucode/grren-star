@@ -3,6 +3,7 @@ import { Outfit } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/lib/site-config";
 import CustomCursor from "@/components/CustomCursor";
+import SmoothScroll from "@/components/SmoothScroll";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -67,10 +68,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${outfit.variable} h-full antialiased scroll-smooth`}>
+    <html lang="en" className={`${outfit.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-white text-slate-800 font-sans cursor-none md:cursor-none">
-        <CustomCursor />
-        {children}
+        <SmoothScroll>
+          <CustomCursor />
+          {children}
+        </SmoothScroll>
       </body>
     </html>
   );

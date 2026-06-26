@@ -10,10 +10,9 @@ export default function WhatsAppFloat() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Order on WhatsApp"
-      className="fixed bottom-6 right-6 z-50 flex items-center gap-2 bg-[#25D366] hover:bg-[#1fb855] text-white font-semibold text-sm px-4 py-3 rounded-full shadow-lg shadow-green-900/20 transition-all hover:scale-105"
+      className="interactive fixed bottom-6 right-6 z-50 flex items-center justify-center bg-[#25D366] hover:bg-[#1fb855] text-white w-14 h-14 rounded-full shadow-lg shadow-green-900/20 transition-all hover:scale-110"
     >
-      <MessageCircle className="h-5 w-5" />
-      <span className="hidden sm:inline">Order on WhatsApp</span>
+      <MessageCircle className="h-7 w-7" />
     </a>
   );
 }
