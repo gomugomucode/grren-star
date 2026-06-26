@@ -1,36 +1,35 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Bot, Cpu, Database, MessageSquare, PhoneCall, Zap } from "lucide-react";
 
 export default function Services() {
   const services = [
     {
-      icon: Bot,
+      index: "01",
       title: "AI Automation Systems",
       description: "We deploy customized Large Language Models (LLMs) to automatically categorize inquiries, draft bespoke responses, audit compliance, and extract unstructured data on the fly.",
       badge: "Intelligent",
     },
     {
-      icon: Zap,
+      index: "02",
       title: "Workflow Automation",
       description: "Connect your tech stack. We replace slow human handoffs with robust, multi-step triggers. Webhook integrations sync files, calculate margins, and prompt action items automatically.",
       badge: "High Efficiency",
     },
     {
-      icon: Database,
+      index: "03",
       title: "CRM Integration",
       description: "Synchronize your leads database, pipeline stages, client details, and transaction history. Eliminate manual copy-paste across HubSpot, Salesforce, Pipedrive, or Custom DBs.",
       badge: "Zero Loss",
     },
     {
-      icon: PhoneCall,
+      index: "04",
       title: "Lead Follow-up Systems",
       description: "Respond to inquiries in milliseconds. Our systems instantly qualify incoming leads via SMS/Email, send personalized pitch documents, and prompt booking reminders.",
       badge: "Speed-To-Lead",
     },
     {
-      icon: MessageSquare,
+      index: "05",
       title: "Chatbot / AI Agent Setup",
       description: "Deploy 24/7 autonomous agents on your website, WhatsApp, Slack, or SMS. These agents qualify cold traffic, resolve general customer support, and schedule sales calls.",
       badge: "Active 24/7",
@@ -52,28 +51,27 @@ export default function Services() {
   };
 
   return (
-    <section id="services" className="relative py-24 overflow-hidden">
-      {/* Decorative Glow Blob */}
-      <div className="glow-blob w-[500px] h-[500px] bg-purple-600/10 bottom-[10%] right-[5%]" />
-      <div className="glow-blob w-[300px] h-[300px] bg-blue-600/10 top-[10%] left-[5%]" />
+    <section id="services" className="relative py-24 overflow-hidden bg-slate-950">
+      <div className="absolute inset-0 bg-noise opacity-20 pointer-events-none" />
+      <div className="glow-blob w-[500px] h-[500px] bg-green-600/5 bottom-[10%] right-[5%]" />
+      <div className="glow-blob w-[300px] h-[300px] bg-slate-600/10 top-[10%] left-[5%]" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-20">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-semibold uppercase tracking-wider mb-4">
-            <Cpu className="h-3.5 w-3.5" />
-            <span>Our Service Offerings</span>
+          <div className="inline-flex items-center gap-2 mb-6 justify-center">
+            <span className="h-px w-8 bg-green-500/50 block" />
+            <p className="text-[10px] font-bold text-green-400 tracking-[0.25em] uppercase">Enterprise Offerings</p>
+            <span className="h-px w-8 bg-green-500/50 block" />
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white mb-6">
-            Custom Automation Built For Enterprise Scaling
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white mb-6 leading-[1.1]">
+            Custom Automation <span className="text-slate-500 font-light block">Built For Scaling.</span>
           </h2>
-          <p className="text-lg text-gray-400">
+          <p className="text-lg text-slate-400 font-light">
             We don't offer generic templates. We build custom-engineered AI models and robust integrations tailored exactly to your company's operational bottlenecks.
           </p>
         </div>
 
-        {/* Services Grid (centered layout since there are 5 services) */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -82,38 +80,36 @@ export default function Services() {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center"
         >
           {services.map((service, index) => {
-            const IconComponent = service.icon;
-            // The 5th item will stretch in larger layouts for styling symmetry
             const isLastItem = index === 4;
             return (
-              <motion.div
+               <motion.div
                 key={index}
                 variants={cardVariants}
-                className={`glass-card p-8 rounded-2xl border border-gray-800/80 relative flex flex-col justify-between ${
+                className={`group cursor-none border border-slate-800/80 bg-slate-900/50 hover:bg-slate-900/80 p-8 flex flex-col justify-between transition-all duration-700 ${
                   isLastItem ? "md:col-span-2 lg:col-span-1" : ""
                 }`}
               >
                 <div>
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="p-3 rounded-xl bg-indigo-600/10 border border-indigo-500/20 text-indigo-400">
-                      <IconComponent className="h-6 w-6" />
-                    </div>
-                    <span className="text-[10px] font-bold uppercase tracking-wider bg-gray-900 border border-gray-800 text-indigo-300 px-2.5 py-1 rounded-full">
+                  <div className="flex items-center justify-between mb-8 border-b border-slate-800 pb-4">
+                    <span className="text-sm font-mono text-green-500/80 tracking-widest">
+                      [ SYS - {service.index} ]
+                    </span>
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500">
                       {service.badge}
                     </span>
                   </div>
 
-                  <h3 className="text-xl font-bold text-white mb-3">
+                  <h3 className="text-xl font-bold text-slate-100 mb-4 tracking-tight group-hover:text-green-400 transition-colors duration-500">
                     {service.title}
                   </h3>
-                  <p className="text-sm text-gray-400 leading-relaxed">
+                  <p className="text-sm text-slate-400 leading-relaxed font-light">
                     {service.description}
                   </p>
                 </div>
 
-                <div className="mt-8 pt-6 border-t border-gray-900 flex items-center text-xs font-semibold text-indigo-400 group cursor-pointer hover:text-indigo-300">
-                  <span>Learn integration details</span>
-                  <span className="ml-1.5 transition-transform duration-200 group-hover:translate-x-1">-&gt;</span>
+                <div className="mt-12 flex items-center text-[10px] uppercase font-bold tracking-widest text-slate-600 group-hover:text-green-500 transition-colors duration-500">
+                  <span className="h-px w-0 group-hover:w-8 bg-green-500 transition-all duration-500 mr-0 group-hover:mr-3" />
+                  <span>Explore Architecture</span>
                 </div>
               </motion.div>
             );

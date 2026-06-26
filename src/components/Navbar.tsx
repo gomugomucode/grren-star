@@ -99,7 +99,7 @@ export default function Navbar() {
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleScrollTo(e, link.href)}
-                  className="text-sm font-medium text-slate-600 hover:text-green-700 transition-colors"
+                  className="text-base font-semibold text-slate-600 hover:text-green-700 transition-colors"
                 >
                   {link.name}
                 </a>
@@ -143,7 +143,7 @@ export default function Navbar() {
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleScrollTo(e, link.href)}
-                  className="block text-sm font-medium text-slate-700 hover:text-green-700 py-1"
+                  className="block text-base font-semibold text-slate-700 hover:text-green-700 py-2"
                 >
                   {link.name}
                 </a>

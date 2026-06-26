@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { AlertCircle, CheckCircle2, Loader2, Send, Phone, MapPin, Mail } from "lucide-react";
+import { AlertCircle, CheckCircle2, Loader2, Send } from "lucide-react";
+import { motion } from "framer-motion";
 import OrderButtons from "@/components/OrderButtons";
 import { getTelLink, siteConfig } from "@/lib/site-config";
 
@@ -65,181 +66,221 @@ export default function ContactForm() {
   };
 
   return (
-    <section id="contact" className="py-16 lg:py-20 bg-white">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-xl mx-auto mb-10">
-          {/* <p className="text-sm font-semibold text-green-700 mb-3">Contact</p> */}
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-950">
+    <section id="contact" className="py-24 lg:py-32 bg-slate-50 relative">
+      <div className="absolute inset-0 bg-noise opacity-30 pointer-events-none" />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="text-center max-w-2xl mx-auto mb-16"
+        >
+          <div className="inline-flex items-center gap-2 mb-4 justify-center">
+            <span className="h-px w-8 bg-green-600 block" />
+            <p className="text-xs font-bold text-green-700 tracking-[0.2em] uppercase">Let's Connect</p>
+            <span className="h-px w-8 bg-green-600 block" />
+          </div>
+          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-slate-900 leading-[1.1]">
             Tell us what you need.
           </h2>
-          <p className="text-slate-500 mt-3">
-            Call, WhatsApp, or send a short enquiry for pricing and availability.
+          <p className="text-lg text-slate-500 mt-6 font-light">
+            Call, WhatsApp, or send a short enquiry for pricing and availability. We typically respond within minutes.
           </p>
-          <div className="mt-6 flex justify-center">
+          <div className="mt-8 flex justify-center">
             <OrderButtons />
           </div>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
-          <div className="lg:col-span-2 space-y-6">
-            <div className="industrial-card p-6">
-              <h3 className="font-bold text-slate-800 mb-4">Reach Us</h3>
-              <ul className="space-y-4 text-sm text-slate-600">
-                <li className="flex gap-3">
-                  <MapPin className="h-5 w-5 text-green-700 flex-shrink-0 mt-0.5" />
-                  <span>{siteConfig.address.full}</span>
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-12 lg:gap-20">
+          <motion.div 
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="space-y-8"
+          >
+            <div>
+              <h3 className="text-2xl font-bold text-slate-900 mb-8 font-sans">Reach Us Directly</h3>
+              <ul className="space-y-8 text-slate-600">
+                <li className="group border-l border-slate-200 pl-6 hover:border-green-600 transition-colors duration-500 cursor-none">
+                  <span className="text-[10px] font-bold tracking-[0.2em] text-green-700 uppercase mb-2 block">Location</span>
+                  <strong className="block text-slate-900 font-medium mb-1">Headquarters</strong>
+                  <span className="font-light leading-relaxed text-sm block">{siteConfig.address.full}</span>
                 </li>
-                <li className="flex gap-3 items-center">
-                  <Phone className="h-5 w-5 text-green-700 flex-shrink-0" />
-                  <a href={getTelLink()} className="hover:text-green-700 font-semibold">
+                <li className="group border-l border-slate-200 pl-6 hover:border-green-600 transition-colors duration-500 cursor-none">
+                  <span className="text-[10px] font-bold tracking-[0.2em] text-green-700 uppercase mb-2 block">Direct Line</span>
+                  <strong className="block text-slate-900 font-medium mb-1">Phone & WhatsApp</strong>
+                  <a href={getTelLink()} className="interactive font-light hover:text-green-700 transition-colors text-sm">
                     {siteConfig.phoneDisplay}
                   </a>
                 </li>
-                <li className="flex gap-3 items-center">
-                  <Mail className="h-5 w-5 text-green-700 flex-shrink-0" />
-                  <a href={`mailto:${siteConfig.email}`} className="hover:text-green-700">
+                <li className="group border-l border-slate-200 pl-6 hover:border-green-600 transition-colors duration-500 cursor-none">
+                  <span className="text-[10px] font-bold tracking-[0.2em] text-green-700 uppercase mb-2 block">Digital</span>
+                  <strong className="block text-slate-900 font-medium mb-1">Email Support</strong>
+                  <a href={`mailto:${siteConfig.email}`} className="interactive font-light hover:text-green-700 transition-colors text-sm">
                     {siteConfig.email}
                   </a>
                 </li>
               </ul>
             </div>
 
-            <div className="bg-green-700 text-white rounded-lg p-6">
-              <h3 className="font-bold mb-2">Delivery Across {siteConfig.coverage}</h3>
-              <p className="text-green-100 text-sm leading-relaxed mb-4">
+            <div className="bg-gradient-to-br from-green-800 to-green-950 text-white rounded-2xl p-8 shadow-xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+              <h3 className="font-bold text-xl mb-3">Delivery Across {siteConfig.coverage}</h3>
+              <p className="text-green-100/80 font-light leading-relaxed mb-6">
                 Gate motors, boom barriers, rolling shutters, and smart home products delivered
                 to Butwal, Pokhara, Biratnagar, and cities nationwide.
               </p>
-              <p className="text-green-100 text-xs">{siteConfig.businessHours}</p>
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-white/10 rounded-full text-xs font-medium tracking-wide">
+                <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+                {siteConfig.businessHours}
+              </div>
             </div>
-          </div>
+          </motion.div>
 
-          <div className="lg:col-span-3">
-            <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 sm:p-8">
-              {submitSuccess ? (
-                <div className="text-center py-8 space-y-4">
-                  <div className="inline-flex p-3 rounded-full bg-green-100 border border-green-200 text-green-600">
-                    <CheckCircle2 className="h-10 w-10" />
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-900">Enquiry Sent Successfully</h3>
-                  <p className="text-sm text-slate-500 max-w-sm mx-auto">
-                    Thank you. We will contact you shortly. For urgent orders, call or WhatsApp us directly.
-                  </p>
+          <motion.div 
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="industrial-card bg-white p-8 sm:p-10"
+          >
+            {submitSuccess ? (
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="text-center py-12 space-y-6"
+              >
+                <div className="inline-flex p-4 rounded-full bg-green-50 text-green-600 mb-2">
+                  <CheckCircle2 className="h-12 w-12" />
+                </div>
+                <h3 className="text-2xl font-bold text-slate-900">Enquiry Sent Successfully</h3>
+                <p className="text-slate-500 max-w-sm mx-auto font-light leading-relaxed">
+                  Thank you. We will contact you shortly. For urgent orders, please call or WhatsApp us directly.
+                </p>
+                <div className="pt-4 flex flex-col items-center gap-4">
                   <OrderButtons className="justify-center" size="sm" />
                   <button
                     onClick={() => setSubmitSuccess(false)}
-                    className="block mx-auto text-sm text-green-700 hover:underline font-medium"
+                    className="interactive text-sm text-slate-400 hover:text-green-700 hover:underline transition-all"
                   >
                     Send another enquiry
                   </button>
                 </div>
-              ) : (
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
-                  {submitError && (
-                    <div className="flex items-start gap-3 p-3 bg-red-50 border border-red-200 rounded-lg text-red-700 text-sm">
-                      <AlertCircle className="h-4 w-4 mt-0.5 flex-shrink-0" />
-                      {submitError}
-                    </div>
-                  )}
+              </motion.div>
+            ) : (
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                {submitError && (
+                  <motion.div 
+                    initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
+                    className="flex items-start gap-3 p-4 bg-red-50 border-l-4 border-red-500 rounded-r-lg text-red-700 text-sm"
+                  >
+                    <AlertCircle className="h-5 w-5 flex-shrink-0" />
+                    <span className="pt-0.5">{submitError}</span>
+                  </motion.div>
+                )}
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">
-                        Your Name <span className="text-red-500">*</span>
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="Your name"
-                        {...register("name", { required: "Name is required", minLength: { value: 2, message: "Min 2 characters" } })}
-                        className="w-full border border-slate-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 bg-white"
-                      />
-                      {errors.name && (
-                        <p className="text-xs text-red-500 mt-1">{errors.name.message}</p>
-                      )}
-                    </div>
-                    <div>
-                      <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">
-                        Email <span className="text-red-500">*</span>
-                      </label>
-                      <input
-                        type="email"
-                        placeholder="your@email.com"
-                        {...register("email", {
-                          required: "Email is required",
-                          pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: "Invalid email" },
-                        })}
-                        className="w-full border border-slate-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 bg-white"
-                      />
-                      {errors.email && (
-                        <p className="text-xs text-red-500 mt-1">{errors.email.message}</p>
-                      )}
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">
-                        Phone <span className="text-red-500">*</span>
-                      </label>
-                      <input
-                        type="tel"
-                        placeholder="+977 98XXXXXXXX"
-                        {...register("phone", { required: "Phone is required", minLength: { value: 7, message: "Min 7 digits" } })}
-                        className="w-full border border-slate-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 bg-white"
-                      />
-                      {errors.phone && (
-                        <p className="text-xs text-red-500 mt-1">{errors.phone.message}</p>
-                      )}
-                    </div>
-                    <div>
-                      <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">
-                        Product / Service <span className="text-red-500">*</span>
-                      </label>
-                      <select
-                        {...register("businessType", { required: "Please select a product" })}
-                        className="w-full border border-slate-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 bg-white"
-                      >
-                        <option value="">Select product...</option>
-                        {productOptions.map((opt) => (
-                          <option key={opt} value={opt}>{opt}</option>
-                        ))}
-                      </select>
-                      {errors.businessType && (
-                        <p className="text-xs text-red-500 mt-1">{errors.businessType.message}</p>
-                      )}
-                    </div>
-                  </div>
-
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-xs font-bold text-slate-600 uppercase tracking-wider mb-1.5">
-                      Delivery City &amp; Requirements <span className="text-red-500">*</span>
+                    <label className="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">
+                      Your Name <span className="text-red-400">*</span>
                     </label>
-                    <textarea
-                      rows={4}
-                      placeholder="City in Nepal, product details, quantity, installation needs, etc."
-                      {...register("message", { required: "Please describe your requirement", minLength: { value: 5, message: "Min 5 characters" } })}
-                      className="w-full border border-slate-300 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-green-500 focus:ring-1 focus:ring-green-500 bg-white resize-y min-h-[100px]"
+                    <input
+                      type="text"
+                      placeholder="John Doe"
+                      {...register("name", { required: "Name is required", minLength: { value: 2, message: "Min 2 characters" } })}
+                      className="interactive w-full border-b-2 border-slate-200 px-0 py-3 text-slate-800 focus:outline-none focus:border-green-600 bg-transparent transition-colors placeholder:text-slate-300 font-light"
                     />
-                    {errors.message && (
-                      <p className="text-xs text-red-500 mt-1">{errors.message.message}</p>
+                    {errors.name && (
+                      <p className="text-xs text-red-500 mt-2">{errors.name.message}</p>
                     )}
                   </div>
+                  <div>
+                    <label className="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">
+                      Email <span className="text-red-400">*</span>
+                    </label>
+                    <input
+                      type="email"
+                      placeholder="john@example.com"
+                      {...register("email", {
+                        required: "Email is required",
+                        pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: "Invalid email" },
+                      })}
+                      className="interactive w-full border-b-2 border-slate-200 px-0 py-3 text-slate-800 focus:outline-none focus:border-green-600 bg-transparent transition-colors placeholder:text-slate-300 font-light"
+                    />
+                    {errors.email && (
+                      <p className="text-xs text-red-500 mt-2">{errors.email.message}</p>
+                    )}
+                  </div>
+                </div>
 
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div>
+                    <label className="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">
+                      Phone <span className="text-red-400">*</span>
+                    </label>
+                    <input
+                      type="tel"
+                      placeholder="+977 98XXXXXXXX"
+                      {...register("phone", { required: "Phone is required", minLength: { value: 7, message: "Min 7 digits" } })}
+                      className="interactive w-full border-b-2 border-slate-200 px-0 py-3 text-slate-800 focus:outline-none focus:border-green-600 bg-transparent transition-colors placeholder:text-slate-300 font-light"
+                    />
+                    {errors.phone && (
+                      <p className="text-xs text-red-500 mt-2">{errors.phone.message}</p>
+                    )}
+                  </div>
+                  <div>
+                    <label className="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">
+                      Product / Service <span className="text-red-400">*</span>
+                    </label>
+                    <select
+                      {...register("businessType", { required: "Please select a product" })}
+                      className="interactive w-full border-b-2 border-slate-200 px-0 py-3 text-slate-800 focus:outline-none focus:border-green-600 bg-transparent transition-colors font-light appearance-none"
+                    >
+                      <option value="" disabled className="text-slate-300">Select product...</option>
+                      {productOptions.map((opt) => (
+                        <option key={opt} value={opt} className="text-slate-800">{opt}</option>
+                      ))}
+                    </select>
+                    {errors.businessType && (
+                      <p className="text-xs text-red-500 mt-2">{errors.businessType.message}</p>
+                    )}
+                  </div>
+                </div>
+
+                <div className="pt-2">
+                  <label className="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2">
+                    Requirements &amp; Location <span className="text-red-400">*</span>
+                  </label>
+                  <textarea
+                    rows={3}
+                    placeholder="E.g., I need a sliding gate motor for my home in Pokhara..."
+                    {...register("message", { required: "Please describe your requirement", minLength: { value: 5, message: "Min 5 characters" } })}
+                    className="interactive w-full border-b-2 border-slate-200 px-0 py-3 text-slate-800 focus:outline-none focus:border-green-600 bg-transparent transition-colors placeholder:text-slate-300 font-light resize-y"
+                  />
+                  {errors.message && (
+                    <p className="text-xs text-red-500 mt-2">{errors.message.message}</p>
+                  )}
+                </div>
+
+                <div className="pt-6">
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full inline-flex items-center justify-center gap-2 py-3 px-6 bg-green-700 hover:bg-green-800 disabled:bg-green-700/60 text-white font-semibold text-sm rounded-lg transition-colors"
+                    className="interactive w-full inline-flex items-center justify-center gap-3 py-4 px-8 bg-slate-900 hover:bg-green-700 disabled:bg-slate-400 text-white font-semibold text-sm rounded-xl transition-all duration-300 shadow-lg hover:shadow-green-700/20"
                   >
                     {isSubmitting ? (
-                      <><Loader2 className="h-4 w-4 animate-spin" /> Sending...</>
+                      <><Loader2 className="h-5 w-5 animate-spin" /> Transmitting...</>
                     ) : (
-                      <><Send className="h-4 w-4" /> Submit Enquiry</>
+                      <><Send className="h-4 w-4" /> Send Enquiry</>
                     )}
                   </button>
-                </form>
-              )}
-            </div>
-          </div>
+                </div>
+              </form>
+            )}
+          </motion.div>
         </div>
       </div>
     </section>
