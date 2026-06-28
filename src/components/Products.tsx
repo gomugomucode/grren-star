@@ -70,47 +70,51 @@ export default function Products({ limit }: { limit?: number }) {
           </p>
         </motion.div>
 
-        <motion.div 
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-50px" }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {displayedProducts.map((product) => (
-            <motion.article 
-              variants={itemVariant}
+            <article 
               key={product.title} 
-              className="group flex flex-col industrial-card overflow-hidden"
+              className="group relative h-[420px] rounded-3xl overflow-hidden flex flex-col justify-end isolate shadow-md hover:shadow-2xl transition-all duration-500"
             >
-              <div className="relative w-full h-48 sm:h-56 lg:h-64 overflow-hidden bg-slate-50">
-                <div className="absolute top-[-40px] left-0 w-full h-[calc(100%+80px)] parallax-wrapper">
-                  <Image
-                    src={product.image}
-                    alt={product.title}
-                    fill
-                    className="object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-110"
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  />
-                  <div className="absolute inset-0 bg-slate-900/10 group-hover:bg-transparent transition-colors duration-[1.2s]" />
-                </div>
+              <div className="absolute top-[-40px] left-0 w-full h-[calc(100%+80px)] parallax-wrapper z-[-2]">
+                <Image
+                  src={product.image}
+                  alt={product.title}
+                  fill
+                  className="object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
               </div>
-              <div className="p-5 sm:p-8 flex flex-1 flex-col">
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-slate-900 mb-3">{product.title}</h3>
-                  <p className="text-slate-500 leading-relaxed font-light">{product.description}</p>
+              
+              {/* Overlays for better contrast */}
+              <div className="absolute inset-0 z-[-1] bg-slate-900/10 group-hover:bg-slate-900/30 transition-colors duration-500" />
+              <div className="absolute inset-0 z-[-1] bg-gradient-to-t from-slate-900/70 via-slate-900/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
+              
+              {/* Glassmorphism content block */}
+              <div className="m-4 sm:m-5 p-6 rounded-2xl bg-slate-950/70 backdrop-blur-xl border border-white/10 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 shadow-xl relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                
+                <h3 className="text-xl font-bold text-white mb-1 relative z-10">{product.title}</h3>
+                
+                <div className="grid grid-rows-[0fr] group-hover:grid-rows-[1fr] transition-[grid-template-rows] duration-500 ease-in-out relative z-10">
+                  <div className="overflow-hidden">
+                    <p className="text-slate-300 text-sm leading-relaxed mb-4 mt-2 line-clamp-3">
+                      {product.description}
+                    </p>
+                  </div>
                 </div>
+                
                 <Link
                   href={`/products/${product.slug}`}
-                  className="interactive mt-8 inline-flex items-center gap-2 font-semibold text-green-700 hover:text-green-800 transition-colors group/link"
+                  className="interactive mt-2 inline-flex items-center gap-2 text-sm font-semibold text-green-400 hover:text-green-300 transition-colors group/link relative z-10"
                 >
                   Explore System
                   <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
                 </Link>
               </div>
-            </motion.article>
+            </article>
           ))}
-        </motion.div>
+        </div>
         
         {limit && products.length > limit && (
           <div className="mt-16 flex justify-center">

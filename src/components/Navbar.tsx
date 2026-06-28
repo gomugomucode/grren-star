@@ -101,7 +101,7 @@ export default function Navbar() {
           >
             <div className="flex items-center justify-center rounded-full overflow-hidden bg-white shadow-sm ring-1 ring-slate-100">
               <Image
-                src="/nav_logo.png"
+                src="/nav_logo.webp"
                 alt={`${siteConfig.shortName} logo`}
                 width={36}
                 height={36}
@@ -177,7 +177,7 @@ export default function Navbar() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -20, scale: 0.95 }}
               transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-              className="fixed inset-x-0 top-0 pt-20 pb-8 px-6 bg-white/95 backdrop-blur-xl border-b border-slate-200 shadow-2xl rounded-b-3xl"
+              className="fixed inset-x-0 top-0 z-40 pt-20 pb-8 px-6 bg-white/95 backdrop-blur-xl border-b border-slate-200 shadow-2xl rounded-b-3xl"
             >
                 {navLinks.map((link, i) => (
                   <Link

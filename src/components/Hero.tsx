@@ -120,37 +120,30 @@ export default function Hero() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.8, ease: "easeInOut" }}
-                className="absolute inset-0"
+                className="absolute inset-0 interactive cursor-grab active:cursor-grabbing"
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={0.2}
+                onDragEnd={(e, { offset }) => {
+                  if (offset.x < -50) {
+                    showNext();
+                  } else if (offset.x > 50) {
+                    showPrevious();
+                  }
+                }}
               >
                 <Image
                   src={facilities[current].image}
                   alt={facilities[current].title}
                   fill
                   priority
-                  className="object-cover"
+                  className="object-cover pointer-events-none"
                   sizes="(max-width: 1024px) 100vw, 60vw"
                 />
               </motion.div>
             </AnimatePresence>
 
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent" />
-
-            <div className="absolute top-6 right-6 flex gap-3">
-              <button
-                type="button"
-                onClick={showPrevious}
-                className="interactive grid h-12 w-12 place-items-center rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white transition-all hover:bg-white hover:text-slate-900"
-              >
-                <ChevronLeft className="h-5 w-5" />
-              </button>
-              <button
-                type="button"
-                onClick={showNext}
-                className="interactive grid h-12 w-12 place-items-center rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white transition-all hover:bg-white hover:text-slate-900"
-              >
-                <ChevronRight className="h-5 w-5" />
-              </button>
-            </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent pointer-events-none" />
 
             <div className="absolute bottom-8 left-8 right-8">
               <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6">

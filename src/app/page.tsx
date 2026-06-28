@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import SatisfactionBanner from "@/components/SatisfactionBanner";
+
 import AboutSection from "@/components/AboutSection";
 import Products from "@/components/Products";
 import ContactCTA from "@/components/ContactCTA";
@@ -113,7 +113,6 @@ export default function Home() {
 
       <main className="flex-grow">
         <Hero />
-        <SatisfactionBanner />
         <Products limit={3} />
         <AboutSection />
         <ContactCTA />

@@ -1,15 +1,9 @@
 import type { Metadata } from "next";
-import { Outfit } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/lib/site-config";
 import CustomCursor from "@/components/CustomCursor";
 import SmoothScroll from "@/components/SmoothScroll";
 
-const outfit = Outfit({
-  subsets: ["latin"],
-  variable: "--font-outfit",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
@@ -68,7 +62,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${outfit.variable} h-full antialiased`}>
+    <html lang="en" className="h-full antialiased">
       <body className="min-h-full flex flex-col bg-white text-slate-800 font-sans cursor-none md:cursor-none">
         <SmoothScroll>
           <CustomCursor />

@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import PageHeader from "@/components/PageHeader";
 import AboutSection from "@/components/AboutSection";
 import TrustSection from "@/components/TrustSection";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
@@ -17,17 +18,10 @@ export default function AboutPage() {
       <Navbar />
 
       <main className="flex-grow">
-        <div className="bg-slate-900 pt-32 sm:pt-36 lg:pt-40 pb-16 lg:pb-24 relative overflow-hidden">
-          <div className="absolute inset-0 bg-noise opacity-20 pointer-events-none" />
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6">
-              Our Story
-            </h1>
-            <p className="text-lg sm:text-xl text-slate-300 font-light max-w-2xl mx-auto">
-              Delivering precision, durability, and a seamless client experience across Nepal since our inception.
-            </p>
-          </div>
-        </div>
+        <PageHeader 
+          title="Our Story"
+          subtitle="Delivering precision, durability, and a seamless client experience across Nepal since our inception."
+        />
 
         <AboutSection />
         <TrustSection />

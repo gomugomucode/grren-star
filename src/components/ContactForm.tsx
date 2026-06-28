@@ -70,30 +70,7 @@ export default function ContactForm() {
       <div className="absolute inset-0 bg-noise opacity-30 pointer-events-none" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          className="text-center max-w-2xl mx-auto mb-16"
-        >
-          <div className="inline-flex items-center gap-2 mb-4 justify-center">
-            <span className="h-px w-8 bg-green-600 block" />
-            <p className="text-xs font-bold text-green-700 tracking-[0.2em] uppercase">Let's Connect</p>
-            <span className="h-px w-8 bg-green-600 block" />
-          </div>
-          <h2 className="text-4xl sm:text-5xl font-bold tracking-tight text-slate-900 leading-[1.1]">
-            Tell us what you need.
-          </h2>
-          <p className="text-lg text-slate-500 mt-6 font-light">
-            Call, WhatsApp, or send a short enquiry for pricing and availability. We typically respond within minutes.
-          </p>
-          <div className="mt-8 flex justify-center">
-            <OrderButtons />
-          </div>
-        </motion.div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-12 lg:gap-20">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.5fr] gap-12 lg:gap-20 pt-16">
           <motion.div 
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}

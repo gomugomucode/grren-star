@@ -5,6 +5,12 @@ import Image from "next/image";
 import { motion, Variants } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { servicePages } from "@/lib/services";
+import { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 interface ServiceHighlightsProps {
   hideHeading?: boolean;
@@ -32,8 +38,26 @@ export default function ServiceHighlights({
   heading = "Pioneering Automation Solutions",
   subtext = "Discover our comprehensive suite of intelligent automation services engineered for performance, security, and convenience.",
 }: ServiceHighlightsProps) {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useGSAP(() => {
+    const wrappers = gsap.utils.toArray<HTMLElement>(".parallax-wrapper");
+    wrappers.forEach((wrapper) => {
+      gsap.to(wrapper, {
+        y: 80,
+        ease: "none",
+        scrollTrigger: {
+          trigger: wrapper.parentElement,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        }
+      });
+    });
+  }, { scope: sectionRef });
+
   return (
-    <section id="services" className="py-24 relative overflow-hidden bg-slate-50 border-t border-slate-200">
+    <section ref={sectionRef} id="services" className="py-24 relative overflow-hidden bg-slate-50 border-t border-slate-200">
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-green-50 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-50/50 rounded-full blur-[80px] pointer-events-none" />
 
@@ -74,12 +98,14 @@ export default function ServiceHighlights({
                 className="group relative overflow-hidden rounded-3xl h-[400px] flex flex-col justify-end isolate shadow-md hover:shadow-2xl transition-all duration-500"
               >
                 {service.image && (
-                  <Image
-                    src={service.image}
-                    alt={service.title}
-                    fill
-                    className="absolute inset-0 object-cover z-[-2] transition-transform duration-700 group-hover:scale-110"
-                  />
+                  <div className="absolute top-[-40px] left-0 w-full h-[calc(100%+80px)] parallax-wrapper z-[-2]">
+                    <Image
+                      src={service.image}
+                      alt={service.title}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                  </div>
                 )}
                 {/* Gradient overlay for readability */}
                 <div className="absolute inset-0 z-[-1] bg-gradient-to-t from-slate-950/90 via-slate-900/40 to-transparent transition-opacity duration-500 group-hover:opacity-90" />
