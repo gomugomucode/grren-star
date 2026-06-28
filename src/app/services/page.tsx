@@ -43,7 +43,7 @@ export default function ServicesPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-4xl mx-auto mb-16">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-sm font-semibold text-green-700 mb-8 uppercase tracking-widest shadow-sm">
-              Solutions Portfolio
+              Services We Offer
             </div>
             <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-8 text-slate-900">
               Engineered for

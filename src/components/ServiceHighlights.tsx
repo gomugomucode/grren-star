@@ -1,16 +1,16 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion, Variants } from "framer-motion";
-import { ShieldCheck, Cpu, DoorOpen, Webhook, Home, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { servicePages } from "@/lib/services";
 
 interface ServiceHighlightsProps {
   hideHeading?: boolean;
   heading?: string;
   subtext?: string;
 }
-
-import { servicePages } from "@/lib/services";
 
 const container: Variants = {
   hidden: { opacity: 0 },
@@ -23,7 +23,7 @@ const container: Variants = {
 };
 
 const item: Variants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 30 },
   show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 300, damping: 24 } },
 };
 
@@ -64,35 +64,44 @@ export default function ServiceHighlights({
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8"
         >
           {servicePages.map((service) => {
-            const Icon = service.icon;
             return (
               <motion.article 
                 key={service.slug} 
                 variants={item}
-                className="group relative p-5 sm:p-8 rounded-3xl bg-white border border-slate-200 hover:border-green-300 hover:shadow-xl transition-all duration-300 flex flex-col h-full industrial-card"
+                className="group relative overflow-hidden rounded-3xl h-[400px] flex flex-col justify-end isolate shadow-md hover:shadow-2xl transition-all duration-500"
               >
-                <div className="mb-6 w-14 h-14 rounded-2xl bg-gradient-to-br from-green-50 to-green-100 flex items-center justify-center border border-green-200 group-hover:scale-110 group-hover:bg-green-600 group-hover:border-green-600 transition-all duration-500">
-                  <Icon className="w-7 h-7 text-green-700 group-hover:text-white transition-colors" strokeWidth={1.5} />
+                {service.image && (
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    className="absolute inset-0 object-cover z-[-2] transition-transform duration-700 group-hover:scale-110"
+                  />
+                )}
+                {/* Gradient overlay for readability */}
+                <div className="absolute inset-0 z-[-1] bg-gradient-to-t from-slate-950/90 via-slate-900/40 to-transparent transition-opacity duration-500 group-hover:opacity-90" />
+                <div className="absolute inset-0 z-[-1] bg-green-950/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                
+                <div className="p-8 translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                  <h3 className="text-2xl font-bold mb-3 text-white">
+                    {service.title}
+                  </h3>
+                  
+                  <p className="text-slate-200/80 leading-relaxed mb-6 text-sm line-clamp-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
+                    {service.description}
+                  </p>
+                  
+                  <Link
+                    href={`/services/${service.slug}`}
+                    className="inline-flex items-center gap-2 text-sm font-semibold text-green-400 hover:text-green-300 transition-colors group/link"
+                  >
+                    Explore solution
+                    <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
+                  </Link>
                 </div>
-                
-                <h3 className="text-xl font-bold mb-3 text-slate-900 group-hover:text-green-700 transition-colors">
-                  {service.title}
-                </h3>
-                
-                <p className="text-slate-600 leading-relaxed mb-8 flex-grow text-sm">
-                  {service.description}
-                </p>
-                
-                <Link
-                  href={`/services/${service.slug}`}
-                  className="mt-auto inline-flex items-center gap-2 text-sm font-semibold text-green-700 hover:text-green-800 transition-colors group/link"
-                >
-                  Explore solution
-                  <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
-                </Link>
               </motion.article>
             );
           })}
@@ -101,3 +110,4 @@ export default function ServiceHighlights({
     </section>
   );
 }
+

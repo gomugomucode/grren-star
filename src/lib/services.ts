@@ -8,6 +8,7 @@ export const servicePages = [
     description:
       "Seamless entry solutions for residential and commercial spaces, featuring state-of-the-art sliding and swing gate automation.",
     pageHeading: "Advanced Entrance Automation",
+    image: "/Access Controlled Entrance.jpg",
     pageDescription:
       "We provide premium entrance automation systems and access control solutions tailored for modern security needs.",
     highlights: [
@@ -35,6 +36,7 @@ export const servicePages = [
     description:
       "Robust motorization options designed for durability and quiet operation, suitable for every gate type.",
     pageHeading: "Premium Gate Automation Solutions",
+    image: "/Swing Gate.jpg",
     pageDescription:
       "Experience the pinnacle of convenience and security with our engineering-grade gate automation systems.",
     highlights: [
@@ -62,6 +64,7 @@ export const servicePages = [
     description:
       "High-performance boom barriers ensuring secure and efficient traffic control for parking facilities and restricted areas.",
     pageHeading: "Intelligent Boom Barrier Systems",
+    image: "/boom Barrier.jpg",
     pageDescription:
       "Optimize vehicle flow and enforce security with our high-speed, heavy-duty boom barriers.",
     highlights: [
@@ -89,6 +92,7 @@ export const servicePages = [
     description:
       "Heavy-duty sliding gate mechanisms providing smooth, trackless operation even for large industrial installations.",
     pageHeading: "High-Capacity Sliding Gate Motors",
+    image: "/slidinggate.jpg",
     pageDescription:
       "Power your perimeter security with sliding gate motors designed for heavy loads and intensive use.",
     highlights: [
@@ -116,6 +120,7 @@ export const servicePages = [
     description:
       "Intelligent control systems that seamlessly connect lighting, security, and access for a fully automated living experience.",
     pageHeading: "Next-Generation Home Automation",
+    image: "/Security Systems.jpg",
     pageDescription:
       "Transform your living space with intuitive smart home technology that brings comfort, security, and energy efficiency to your fingertips.",
     highlights: [
